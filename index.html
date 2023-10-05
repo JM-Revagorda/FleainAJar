@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flea In A Jar</title>
+        <style>
+            body{
+                display: grid;
+                grid-template-rows: auto auto auto;
+            }
+            .header, .content, .footer{
+                border: 1px solid black;
+            }
+            .header {
+                display: grid;
+                grid-template: 'dat1'
+                               'dat2'
+                               'dat3';
+            }
+                #dat1, #dat2, #dat3{
+                    margin: 0px;
+                    border: 1px solid palevioletred;
+                }
+                #dat1{padding: 3% 0;}
+                #dat2{padding: 2% 0 5% 0;}
+                #dat3{padding: 2% 0;}
+
+            .content{padding: 35% 0%;}
+            .footer {padding: 5% 0;}
+        </style>
+    </head>
+<body>
+    <div class="header">
+        <div id="dat1"></div>
+        <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
+            <center>
+                <h1 style="font-size: 140px; text-shadow: 5px 5px gray; color: #a8030a;">Flea in a jar</h1>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <p style="letter-spacing: 20px; color: #a8030a;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
+                <br/>
+                <p>a catharsis to reduce stigma and to educate the public.<br/>
+                a reminder to others who are still caught like fleas in a jar.</p>
+            </center>
+        </div>
+        <div id="dat3"></div>
+    </div>
+    <div class="content">
+
+    </div>
+    <div class="footer">
+
+    </div>
+</body>
+</html>
