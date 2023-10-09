@@ -23,8 +23,29 @@
                 #dat1{padding: 3% 0;}
                 #dat2{padding: 2% 0 5% 0;}
                 #dat3{padding: 2% 0;}
+                    .menu{
+                        list-style-type: none;
+                    }
+                    li{
+                        float: right;
+                        display: block;
+                        padding: 0 20px;
+                    }
+                    a{
+                        text-decoration: none;;
+                    }
 
-            .content{padding: 35% 0%;}
+            .content{
+                padding: 10% 0%;
+                display: grid;
+                grid-template: '.image' '.text';
+            }
+                .image{
+                    padding: 50% 20%;
+                }
+                .text{
+                    padding: 10% 20%;
+                }
             .footer {padding: 5% 0;}
         </style>
     </head>
@@ -44,10 +65,19 @@
                 a reminder to others who are still caught like fleas in a jar.</p>
             </center>
         </div>
-        <div id="dat3"></div>
+        <div id="dat3">
+            <ul class="menu">
+                <li><a href="map.html">MAP</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><u>HOME</u></li>
+            </ul>
+        </div>
     </div>
     <div class="content">
-
+        <div class="image" style="border: 2px dashed gray;">
+        </div>
+        <div class="text" style="border: 2px dashed gray;">
+        </div>
     </div>
     <div class="footer">
 

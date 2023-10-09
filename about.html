@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            *{margin: 0;}
+            body{
+                display: grid;
+                grid-template: "header"
+                               "content"
+                               "footer";
+            }
+            #header, #content, #footer{
+                border: 1px solid magenta;
+            }
+                .headers{padding: 14% 0;}
+                .lowersect{
+                    padding: 3% 0;
+                    border: 1px dashed goldenrod;
+                }
+                    .menu{
+                        list-style-type: none;
+                    }
+                    li{
+                        float: right;
+                        margin: 0 10px;
+                    }
+                    a{
+                        text-decoration: none;;
+                    }
+            #content{
+                padding: 70% 0;
+            }
+            #footer{
+                padding: 5% 0;
+            }
+        </style>
+    </head>
+<body>
+    <div id="header">
+        <div class="headers">
+            <p style="text-align: center; font-size: 40px;">
+                ABOUT
+            </p>
+        </div>
+        <div class="lowersect">
+            <ul class="menu">
+                <li><a href="map.html">MAP</a></li>
+                <li><u>ABOUT</u></li>
+                <li><a href="index.html">HOME</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+
+    </div>
+    <div id="footer">
+
+    </div>
+</body>
+</html>
