@@ -18,11 +18,46 @@
                 grid-template: 'dat1'
                                'dat2'
                                'dat3';
+                background-image: url('images/headertemp.png');
+                background-position: 40% 66%;
+                background-repeat: no-repeat;
+                background-size: 140% 170%;
             }
+                .click{
+                    color: white;
+                    font-size: 50px;
+                    position: absolute;
+                    transition: text-shadow 0.3s;
+                }
+                    .ar1{
+                        top: 40%;
+                        left: 5%;
+                    }
+                    .ar2{
+                        top: 40%;
+                        right: 5%;
+                    }
+                    .click:hover{
+                        cursor:pointer;
+                        text-shadow: 0 0 5px gray;
+                    }
                 #dat1, #dat2, #dat3{
                     margin: 0px;
                     border: 1px solid palevioletred;
                 }
+                    .dots{
+                        height: 15px;
+                        width: 15px;
+                        background-color: #bbb;
+                        border-radius: 50%;
+                        display: inline-block;
+                        margin: 0 10px;
+                        transition: 0.3s;
+                    }
+                        .dots:hover{
+                            cursor: pointer;
+                            background-color: white;
+                        }
                 #dat1{padding: 2% 0;}
                 /* #dat2{padding: 0 0 % 0;} */
                 #dat3{padding: 2% 0;}
@@ -54,6 +89,8 @@
     </head>
 <body>
     <div class="header">
+        <div class="click ar1"><p>&lt;</p></div>
+        <div class="click ar2"><p>&gt;</p></div>
         <div id="dat1"></div>
         <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
             <center>
@@ -63,9 +100,14 @@
                 <br/>
                 <p style="letter-spacing: 20px; color: #a8030a;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
                 <br/>
-                <p>a catharsis to reduce stigma and to educate the public.<br/>
+                <p style="color: white;">a catharsis to reduce stigma and to educate the public.<br/>
                 a reminder to others who are still caught like fleas in a jar.</p>
             </center>
+            <div style="text-align: center;">
+                <span class="dots"></span>
+                <span class="dots"></span>
+                <span class="dots"></span>
+            </div>
         </div>
         <div id="dat3">
             <ul class="menu">
