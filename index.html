@@ -43,7 +43,7 @@
                     }
                 #dat1, #dat2, #dat3{
                     margin: 0px;
-                    border: 1px solid palevioletred;
+                    /* border: 1px solid palevioletred; */
                 }
                     .dots{
                         height: 15px;
@@ -58,19 +58,26 @@
                             cursor: pointer;
                             background-color: white;
                         }
-                #dat1{padding: 2% 0;}
+                /* #dat1{padding: 2% 0;} */
                 /* #dat2{padding: 0 0 % 0;} */
-                #dat3{padding: 2% 0;}
+                /* #dat3{padding: 0 0;} */
                     .menu{
                         list-style-type: none;
                     }
+                    .menu li:hover{
+                        background-color: gray;
+                        color: white;
+                    }
                     li{
+                        color: white;
                         float: right;
                         display: block;
-                        padding: 0 20px;
+                        padding: 30px 40px;
+                        transition: 0.3s;
                     }
                     a{
-                        text-decoration: none;;
+                        color: white;
+                        text-decoration: none;
                     }
 
             .content{
@@ -79,7 +86,7 @@
                 grid-template: '.image' '.text';
             }
                 .image{
-                    padding: 50% 20%;
+                    /* padding: 30% 20%; */
                 }
                 .text{
                     padding: 5% 5%;
@@ -91,14 +98,14 @@
     <div class="header">
         <div class="click ar1"><p>&lt;</p></div>
         <div class="click ar2"><p>&gt;</p></div>
-        <div id="dat1"></div>
+        <div id="dat1"><img src="images/flea logo final.png" width="8%" style="position: relative; left: 3%; top: 10%"></div>
         <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
             <center>
-                <h1 style="font-size: 140px; text-shadow: 5px 5px gray; color: #a8030a;">Flea in a jar</h1>
+                <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a;">Flea in a jar</h1>
                 <br/>
                 <br/>
                 <br/>
-                <p style="letter-spacing: 20px; color: #a8030a;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
+                <p style="letter-spacing: 20px; color: #a8030a; font-size: 16px;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
                 <br/>
                 <p style="color: white;">a catharsis to reduce stigma and to educate the public.<br/>
                 a reminder to others who are still caught like fleas in a jar.</p>
@@ -119,15 +126,37 @@
     </div>
     <div class="content">
         <div class="image" style="border: 2px dashed gray;">
-            <p>Image of Bud here</p>
+            <img src="images/annonymous (2).png" width="80%">
         </div>
         <div class="text" style="border: 2px dashed gray;">
             <h1>Artist's Statement</h1>
             <hr/>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in tortor viverra, ornare eros eu, porta augue. Vestibulum sodales sagittis nisl, ac ultrices ex porta eget. Vivamus porta ultrices tempor. Nulla facilisi. In at neque urna. Aenean vestibulum suscipit molestie. Fusce sed mauris velit. Fusce lobortis libero quis tristique fringilla. Nullam pretium magna nec elit iaculis mattis. Nunc id posuere odio, quis malesuada mi. Nunc porttitor ex eget lobortis lobortis.<br/>
-                <br/>Proin accumsan sit amet urna id dapibus. Maecenas nisi augue, sagittis at urna sed, vulputate commodo massa. Integer dignissim consequat velit sed volutpat. Quisque viverra sagittis leo vitae suscipit. In sem nisl, tincidunt in neque at, euismod dignissim sapien. Maecenas non nisi vitae eros gravida blandit. Fusce orci magna, ornare id orci a, lacinia interdum sem. Etiam eu nibh bibendum, mattis sem eu, condimentum erat. Nulla sodales lorem sapien, sed semper turpis sodales sit amet. Quisque mi nulla, viverra vel pretium a, consectetur consequat massa. Morbi sit amet scelerisque sem. Donec dictum diam vitae sem elementum lacinia. Praesent blandit, sem eu efficitur vestibulum, ipsum est aliquet tellus, et rhoncus sapien est non nibh. Vestibulum bibendum nec leo vitae commodo. Proin eleifend neque volutpat, convallis turpis nec, pulvinar quam. Nulla nec pellentesque diam.
-            </p>
+                A sense of hopelessness, pressure, and
+                despair— Flea in a jar is an experiment
+                where fleas are trapped inside a jar and
+                will jump repeatedly until they learn
+                that hitting the lid is painful. When the
+                lid is removed, they will only jump as
+                high as the lid. Dealing with mental
+                health alone, one feels they are confined
+                to a tight space and are unable to move.
+                Constantly jumping from one problem
+                to another, unable to break free of this
+                never-ending loop.<br/>
+                <br/>
+                Flea in a jar a series focuses on one
+                anonymous red subject, a crumpled
+                paper cutout. The series features
+                dissociation from reality, a sensation of
+                alienation from oneself and one's
+                surroundings. a space where you can
+                express your feelings<br/>
+                <br/>
+                This is our catharsis to reduce stigma
+                and educate the public. And a reminder
+                to others who are still caught like fleas
+                in a jar.<br/>
         </div>
     </div>
     <div class="footer">
