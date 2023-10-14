@@ -5,6 +5,7 @@
         <style>
             *{
                 font-family: Arial, helvetica;
+                margin: 0px;
             }
             body{
                 display: grid;
@@ -13,6 +14,7 @@
             }
             .header, .content, .footer{
                 border: 1px solid black;
+                z-index: 2;
             }
             .header {
                 grid-column: 2;
@@ -21,7 +23,7 @@
                                'dat2';
                 background-image: url('images/headertemp.png');
                 background-attachment: fixed;
-                background-position: 40% 66%;
+                background-position: 20% 63%;
                 background-repeat: no-repeat;
                 background-size: 140% 170%;
             }
@@ -72,18 +74,24 @@
                 display: block;
                 position: sticky;
                 top: 0;
-                z-index: 2;
+                z-index: 1;
             }
+                .menu{
+                    margin: 0 -30%;
+                }
                 li{
                         color: black;
                         float: left;
                         display: block;
-                        padding: 100px 40px;
+                        padding: 100px 40%;
                         transition: 0.3s;
                     }
                     a{
                         color: black;
                         text-decoration: none;
+                    }
+                    li:hover{
+                        background-color: gray;
                     }
             .content{
                 grid-area: content;
@@ -91,16 +99,19 @@
                 padding: 5% 0%;
                 display: grid;
                 grid-template: '.image' '.text';
+                background-color: white;
             }
                 .image{
                     object-fit: cover;
                     object-position: -20% 0;
                     filter: drop-shadow(0, 5px, 5px black);
+                    background-color: white;
                 }
                 .text{
                     padding: 5% 5%;
                 }
              .footer {
+                background-color: white;
                 grid-row: 3;
                 grid-column: 1 / span 2;
             }
@@ -109,13 +120,12 @@
 <body>
     <div id="dat3">
         <ul class="menu">
-            <li><a href="map.html">MAP</a></li>
-            <li><a href="about.html">ABOUT</a></li>
+            <a href="map.html"><li>MAP</li></a>
+            <a href="about.html"><li><span style="margin: -20%;">ABOUT</span></li></a>
             <li><u>HOME</u></li>
         </ul>
     </div>
     <div class="header">
-        <div class="click ar1"><p>&lt;</p></div>
         <div class="click ar2"><p>&gt;</p></div>
         <div id="dat1"><img src="images/flea logo final.png" width="8%" style="position: relative; left: 3%; top: 10%"></div>
         <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">

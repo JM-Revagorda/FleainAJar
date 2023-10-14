@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Flea In A Jar</title>
         <style>
             *{margin: 0;}
             body{
                 display: grid;
                 grid-template-columns: 15% auto;
-                grid-template-rows: 17% auto "footer";
+                grid-template-rows: auto auto "footer";
             }
             #header, #content, #footer{
                 border: 1px solid magenta;
@@ -15,8 +15,8 @@
                 z-index: 2;
             }
                 .lowersect{
-                    grid-column: auto;
-                    grid-row: auto;
+                    grid-column: 1;
+                    grid-row: 1;
                     border: 1px solid black;
                     display: block;
                     position: sticky;
@@ -37,6 +37,8 @@
                         }
                 .headers{
                     padding: 12% 0;
+                }
+                #headers{
                     grid-column: 2;
                 }
                     li{
@@ -51,6 +53,20 @@
                 grid-column: 2;
                 grid-row: 2;
             }
+            #content div{
+                border: 1px solid magenta;
+            }
+                .aboutexhibition{
+                    padding: 20% 0;
+                    background-image: url('images/sticker bg.png');
+                    background-attachment: fixed;
+                }
+                .aboutpaintings{
+                    padding: 40% 0;
+                    background-image: url('images/print 1 bg.png');
+                    background-size: 100% 150%;
+                    background-attachment: fixed;
+                }
             #footer{
                 grid-column: 2;
                 grid-row: 3;
@@ -72,7 +88,7 @@
     <div id="header">
         <div class="headers">
             <p style="text-align: center; font-size: 40px;">
-                ABOUT
+                <b>ABOUT</b>
             </p>
         </div>
     </div>
@@ -105,10 +121,13 @@
                 </tr>
             </table>
         </div>
-        
+        <div class="aboutexhibition"></div>
+        <div class="aboutpaintings"></div>
     </div>
     <div id="footer">
-
+        <p style="text-align: center;">
+            Jo-Ri Designs. Made with love. © 2023
+        </p>
     </div>
 </body>
 </html>
