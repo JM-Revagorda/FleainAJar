@@ -6,53 +6,106 @@
             *{margin: 0;}
             body{
                 display: grid;
-                grid-template: "header"
-                               "content"
-                               "footer";
+                grid-template-columns: 15% auto;
+                grid-template-rows: 17% auto "footer";
             }
             #header, #content, #footer{
                 border: 1px solid magenta;
+                background-color: white;
+                z-index: 2;
             }
-                .headers{padding: 14% 0;}
                 .lowersect{
-                    padding: 3% 0;
-                    border: 1px dashed goldenrod;
+                    grid-column: auto;
+                    grid-row: auto;
+                    border: 1px solid black;
+                    display: block;
+                    position: sticky;
+                    top: 0;
+                    z-index: 1;
                 }
                     .menu{
                         list-style-type: none;
+                        margin: 0 -30%;
                     }
+                    .menu li{
+                        float: left;
+                        padding: 100px 35%;
+                        transition: 0.3s;
+                    }
+                        li:hover{
+                            background-color: gray;
+                        }
+                .headers{
+                    padding: 12% 0;
+                    grid-column: 2;
+                }
                     li{
                         float: right;
                         margin: 0 10px;
                     }
                     a{
-                        text-decoration: none;;
+                        text-decoration: none;
+                        color: black;
                     }
             #content{
-                padding: 70% 0;
+                grid-column: 2;
+                grid-row: 2;
             }
             #footer{
+                grid-column: 2;
+                grid-row: 3;
                 padding: 5% 0;
+            }
+            table, td{
+                border: groove 3px grey;
             }
         </style>
     </head>
 <body>
+    <div class="lowersect">
+        <ul class="menu">
+            <li><a href="map.html">MAP</a></li>
+            <li><span style="margin: -20%;"><u>ABOUT</u></span></li>
+            <li><a href="index.html">HOME</a></li>
+        </ul>
+    </div>
     <div id="header">
         <div class="headers">
             <p style="text-align: center; font-size: 40px;">
                 ABOUT
             </p>
         </div>
-        <div class="lowersect">
-            <ul class="menu">
-                <li><a href="map.html">MAP</a></li>
-                <li><u>ABOUT</u></li>
-                <li><a href="index.html">HOME</a></li>
-            </ul>
-        </div>
     </div>
     <div id="content">
-
+        <h1 style="text-align: center;"> WHO ARE IN JO-RI SOLUTIONS? </h1>
+        <div class="creatorarea1">
+            <table>
+                <tr>
+                    <td style="width: 70%;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac sem a ante blandit vulputate. Aenean sit amet condimentum velit. Mauris non feugiat purus. In in suscipit sem, non tempor nulla. Integer tempus lorem pretium quam faucibus suscipit. Proin purus sapien, sagittis sed consequat vel, faucibus at libero. Sed malesuada nunc ac est lacinia, ullamcorper malesuada sem tempor. Vestibulum ac tempus ipsum. Sed accumsan nunc id feugiat eleifend. Sed mauris ex, lacinia quis dolor eu, gravida sollicitudin sapien. Aliquam sit amet sem arcu. Suspendisse laoreet nibh quam.
+                        Donec fermentum et quam sit amet imperdiet. Aliquam congue, erat quis feugiat congue, nisl dui luctus lectus, sit amet pretium neque quam vel massa. Nunc in maximus elit. Nulla semper dictum orci. Proin id pharetra odio. Ut at viverra lorem. Sed venenatis non nibh vel posuere. Fusce nisi justo, aliquet sit amet imperdiet porttitor, semper eu felis. Ut vestibulum, arcu eu pretium molestie, orci nisi feugiat ante, luctus tempus est est ut lectus.
+                    </td>
+                    <td>
+                        <img src="images/placeholder.jpg" width="60%" style="margin: 0 0 0 20%;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <div class="creatorarea2">
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/placeholder2.jpg" width="60%" style="margin: 0 0 0 20%;">
+                    </td>
+                    <td style="width: 70%;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac sem a ante blandit vulputate. Aenean sit amet condimentum velit. Mauris non feugiat purus. In in suscipit sem, non tempor nulla. Integer tempus lorem pretium quam faucibus suscipit. Proin purus sapien, sagittis sed consequat vel, faucibus at libero. Sed malesuada nunc ac est lacinia, ullamcorper malesuada sem tempor. Vestibulum ac tempus ipsum. Sed accumsan nunc id feugiat eleifend. Sed mauris ex, lacinia quis dolor eu, gravida sollicitudin sapien. Aliquam sit amet sem arcu. Suspendisse laoreet nibh quam.
+                        Donec fermentum et quam sit amet imperdiet. Aliquam congue, erat quis feugiat congue, nisl dui luctus lectus, sit amet pretium neque quam vel massa. Nunc in maximus elit. Nulla semper dictum orci. Proin id pharetra odio. Ut at viverra lorem. Sed venenatis non nibh vel posuere. Fusce nisi justo, aliquet sit amet imperdiet porttitor, semper eu felis. Ut vestibulum, arcu eu pretium molestie, orci nisi feugiat ante, luctus tempus est est ut lectus.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
     </div>
     <div id="footer">
 

@@ -8,17 +8,19 @@
             }
             body{
                 display: grid;
-                grid-template-rows: auto auto auto;
+                grid-template-columns: 15% auto;
+                grid-template-rows: auto auto "footer"; 
             }
             .header, .content, .footer{
                 border: 1px solid black;
             }
             .header {
+                grid-column: 2;
                 display: grid;
                 grid-template: 'dat1'
-                               'dat2'
-                               'dat3';
+                               'dat2';
                 background-image: url('images/headertemp.png');
+                background-attachment: fixed;
                 background-position: 40% 66%;
                 background-repeat: no-repeat;
                 background-size: 140% 170%;
@@ -57,30 +59,35 @@
                         .dots:hover{
                             cursor: pointer;
                             background-color: white;
+                            width: 20px;
+                            height: 20px;
                         }
                 /* #dat1{padding: 2% 0;} */
                 /* #dat2{padding: 0 0 % 0;} */
                 /* #dat3{padding: 0 0;} */
-                    .menu{
-                        list-style-type: none;
-                    }
-                    .menu li:hover{
-                        background-color: gray;
-                        color: white;
-                    }
-                    li{
-                        color: white;
-                        float: right;
+            #dat3{
+                grid-column: auto;
+                grid-row: auto;
+                border: 1px solid black;
+                display: block;
+                position: sticky;
+                top: 0;
+                z-index: 2;
+            }
+                li{
+                        color: black;
+                        float: left;
                         display: block;
-                        padding: 30px 40px;
+                        padding: 100px 40px;
                         transition: 0.3s;
                     }
                     a{
-                        color: white;
+                        color: black;
                         text-decoration: none;
                     }
-
             .content{
+                grid-area: content;
+                grid-column: 2;
                 padding: 5% 0%;
                 display: grid;
                 grid-template: '.image' '.text';
@@ -93,10 +100,20 @@
                 .text{
                     padding: 5% 5%;
                 }
-            /* .footer {padding: 5% 0;} */
+             .footer {
+                grid-row: 3;
+                grid-column: 1 / span 2;
+            }
         </style>
     </head>
 <body>
+    <div id="dat3">
+        <ul class="menu">
+            <li><a href="map.html">MAP</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><u>HOME</u></li>
+        </ul>
+    </div>
     <div class="header">
         <div class="click ar1"><p>&lt;</p></div>
         <div class="click ar2"><p>&gt;</p></div>
@@ -117,13 +134,6 @@
                 <span class="dots"></span>
                 <span class="dots"></span>
             </div>
-        </div>
-        <div id="dat3">
-            <ul class="menu">
-                <li><a href="map.html">MAP</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><u>HOME</u></li>
-            </ul>
         </div>
     </div>
     <div class="content">
