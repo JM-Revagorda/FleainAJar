@@ -44,6 +44,9 @@
                         }
                 .headers{
                     padding: 25% 0;
+                    background-image: url("images/testign.gif");
+                    background-repeat: no-repeat;
+                    background-size: cover;
                 }
                 #headers{
                     grid-column: 2;
@@ -59,7 +62,7 @@
             #content{
                 grid-column: 2;
                 grid-row: 2;
-                padding: 6% 4%;
+                padding: 8% 4%;
             }
             /* #content div{
                 border: 1px solid magenta;
@@ -69,6 +72,9 @@
                     grid-row: 3;
                     /* padding: 13% 0; */
                     background-attachment: fixed;
+                }
+                #overlay{
+                    background-color: rgb(0,0,0,0.4);
                 }
                 .aboutpaintings{
                     grid-column: 2;
@@ -88,6 +94,8 @@
                     }
                     .artworkcontent img{
                         width: 80%;
+                        z-index: 4;
+                        transition: 0.3s;
                     }
             #footer{
                 grid-column: 2;
@@ -110,7 +118,7 @@
     </div>
     <div id="header" style="background-color: white;">
         <div class="headers">
-            <p style="text-align: center; font-size: 40px;">
+            <p style="text-align: center; font-size: 40px; color: white;">
                 <b>ABOUT</b>
             </p>
         </div>
@@ -120,12 +128,17 @@
         <div class="creatorarea1">
             <table>
                 <tr>
-                    <td style="width: 70%;">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac sem a ante blandit vulputate. Aenean sit amet condimentum velit. Mauris non feugiat purus. In in suscipit sem, non tempor nulla. Integer tempus lorem pretium quam faucibus suscipit. Proin purus sapien, sagittis sed consequat vel, faucibus at libero. Sed malesuada nunc ac est lacinia, ullamcorper malesuada sem tempor. Vestibulum ac tempus ipsum. Sed accumsan nunc id feugiat eleifend. Sed mauris ex, lacinia quis dolor eu, gravida sollicitudin sapien. Aliquam sit amet sem arcu. Suspendisse laoreet nibh quam.
-                        Donec fermentum et quam sit amet imperdiet. Aliquam congue, erat quis feugiat congue, nisl dui luctus lectus, sit amet pretium neque quam vel massa. Nunc in maximus elit. Nulla semper dictum orci. Proin id pharetra odio. Ut at viverra lorem. Sed venenatis non nibh vel posuere. Fusce nisi justo, aliquet sit amet imperdiet porttitor, semper eu felis. Ut vestibulum, arcu eu pretium molestie, orci nisi feugiat ante, luctus tempus est est ut lectus.
+                    <td style="width: 70%; text-align: right;">
+                        <span style="font-size: xx-large;"><strong>John Michael C. Revagorda</strong></span> is a computer programmer hailing from
+                        Dumaguete City, Negros Oriental. Studying BS IT with Rianne Garcia, he enjoys toying 
+                        with codes found on systems and learning how each line of code work. At his free time, 
+                        he draws several artworks that span on digital artworks and traditional. As a self-taught artist
+                        who attended past art webinars, he utilizes his drawing tablet, his pencil and pen, and his keen art 
+                        skills to draw different characters from different games. As of now, he is dealing with the balancing 
+                        of his school life and his personal time.
                     </td>
                     <td>
-                        <img src="images/placeholder.jpg" width="60%" style="margin: 0 0 0 20%;">
+                        <img src="images/the programmer.png" width="70%" style="margin: 0 0 0 20%; object-fit: cover;">
                     </td>
                 </tr>
             </table>
@@ -135,10 +148,10 @@
             <table>
                 <tr>
                     <td>
-                        <img src="images/placeholder2.jpg" width="60%" style="margin: 0 0 0 20%;">
+                        <img src="images/the artist.png" width="90%" style="margin: 0 0 0 10%;">
                     </td>
                     <td style="width: 70%;">
-                        <strong>Rianne Gracielle M. Garcia</strong> is a multimedia artist whose mediums include traditional and digital
+                        <span style="font-size: xx-large;"><strong>Rianne Gracielle M. Garcia</strong></span> is a multimedia artist whose mediums include traditional and digital
                         artworks. Despite her love for digital art, she is always interested in exploring different media
                         and materials. She is now a first year taking Bachelor of Information Technology, studying at
                         Silliman University. Originally from Cebu City and currently residing in Dumaguete City, Negros
@@ -153,7 +166,7 @@
     </div>
     <div class="aboutexhibition">
     <center>
-        <h1>The Trailer</h1>
+        <h1 style="color: white;">The Trailer</h1>
         <hr style="border: 1px solid black; width: 50%;" />
         <br/>
     
@@ -164,18 +177,20 @@
     <br/>
     </div>
     <div class="aboutpaintings">
-        <br/>
-        <h1 style="color: white;">The Paintings</h1>
-        <center>
-            <hr style="border: 1px solid white; width: 50%;"/>
-        </center>
-        <div class="artworkcontent">
-            <img src="images/29.png">
-            <img src="images/30.png">
-            <img src="images/27.png">
-            <img src="images/28.png">
-            <img src="images/headertemp.png" style="grid-column: 1 / span 2; width: 90.4%;">
-            <img src="images/25.png" style="grid-column: 1 / span 2; width: 40%; padding: 0 0 0 25%;">
+        <div id="overlay">
+            <br/>
+            <h1 style="color: white;">The Paintings</h1>
+            <center>
+                <hr style="border: 1px solid white; width: 50%;"/>
+            </center>
+            <div class="artworkcontent">
+                <img src="images/29.png">
+                <img src="images/30.png">
+                <img src="images/27.png">
+                <img src="images/28.png">
+                <img src="images/headertemp.png" style="grid-column: 1 / span 2; width: 90.4%;">
+                <img src="images/25.png" style="grid-column: 1 / span 2; width: 40%; padding: 0 0 0 25%;">
+            </div>
         </div>
     </div>
     <div id="footer">

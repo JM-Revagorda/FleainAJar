@@ -6,13 +6,17 @@
             *{margin: 0;}
             body{
                 display: grid;
-                grid-template: "header"
-                               "content"
+                grid-template: "content"
                                "footer";
+                background-image: url('images/sticker\ bg2.png');
+                background-repeat: no-repeat;
+                background-size: 120% 290%;
+                background-attachment: fixed;
+                font-family: Arial;
             }
-            #header, #content, #footer{
+            /* #header, #content, #footer{
                 border: 1px solid magenta;
-            }
+            } */
                 .headers{padding: 2% 0;}
                 .lowersect{
                     padding: 2% 0;
@@ -32,10 +36,11 @@
                 padding: 20% 0;
             } */
             #footer{
-                padding: 3% 0;
+                padding: 2% 0;
+                background-color: white;
             }
         </style>
-        <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script>
+        <!-- <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script> -->
     </head>
 <body>
     <!-- <div id="header">
@@ -52,8 +57,9 @@
             </ul>
         </div> -->
     <div id="content">
+        <h1 style="position: absolute; top: 5%; right: 40%; font-size: 90px;">The Map</h1>
         <center>
-        <img src="images/betamap.png" usemap="#image_map" width="90%">
+        <img src="images/betamap2.png" usemap="#image_map">
         <map name="image_map">
         <area alt="" title="Under Construction" href="" coords="1433,399,1511,454" shape="rect">
         <area alt="" title="Back to Lobby" href="index.html" coords="1148,601,1213,687" shape="rect">
@@ -63,14 +69,15 @@
         <area alt="" title="More Info" href="about.html" coords="1438,513,1501,617" shape="rect">
         </map>
         </center>
-        <h1 style="position: absolute; top: 10%; right: 45%;">The Map</h1>
-        <p style="text-align: center;">Click the red dots or the (i) circle to navigate</p>
+        
+        <p style="position: absolute; top: 100%; left: 30%; font-size: 50px;">Click the red dots or the (i) circle to navigate</p>
     </div>
     <div id="footer">
-
+        <center>
+        <img src="images/flea logo final.png" width="10%" style="background-color: white;padding: 0% 0% 2%;">
+        <p style="position: absolute; top: 143%; left: 48%; color:black;"><b>Jo-Ri Designs</b></p>
+        <p>Made with Love. © 2023</p>
+        </center>
     </div>
-    <script>
-        imageMapResize();
-    </script>
 </body>
 </html>
