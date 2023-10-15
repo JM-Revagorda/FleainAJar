@@ -34,9 +34,11 @@
                     }
                     .menu li{
                         float: left;
-                        padding: 100px 35%;
                         transition: 0.3s;
                     }
+                        .menu li, .menu a{
+                            padding: 100px 20.5%;
+                        }
                         li:hover{
                             background-color: gray;
                         }
@@ -57,6 +59,7 @@
             #content{
                 grid-column: 2;
                 grid-row: 2;
+                padding: 6% 4%;
             }
             /* #content div{
                 border: 1px solid magenta;
@@ -64,17 +67,28 @@
                 .aboutexhibition{
                     grid-column: 2;
                     grid-row: 3;
-                    padding: 13% 0;
+                    /* padding: 13% 0; */
                     background-attachment: fixed;
                 }
                 .aboutpaintings{
                     grid-column: 2;
                     grid-row: 4;
-                    padding: 40% 0;
+                    padding: 3% 0;
                     background-image: url('images/print 1 bg.png');
                     background-size: 100% 150%;
                     background-attachment: fixed;
+                    text-align: center;
                 }
+                    .artworkcontent{
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        grid-row-gap: 10px;
+                        grid-column-gap: 40px;
+                        padding: 5% 0 5% 10%;
+                    }
+                    .artworkcontent img{
+                        width: 80%;
+                    }
             #footer{
                 grid-column: 2;
                 grid-row: 5;
@@ -89,7 +103,7 @@
 <body>
     <div class="lowersect">
         <ul class="menu">
-            <a href="map.html"><li>MAP</li></a>
+            <span style="padding: 0 0 30.8%;"><a href="map.html"><li>MAP</li></a></span>
             <li><span style="margin: -20%;"><u>ABOUT</u></span></li>
             <a href="index.html"><li>HOME</li></a>
         </ul>
@@ -102,7 +116,7 @@
         </div>
     </div>
     <div id="content" style="background-image: url('images/papertexturecutout.png');">
-        <h1 style="text-align: center;"> WHO ARE IN JO-RI SOLUTIONS? </h1>
+        <h1 style="text-align: center;"> WHO ARE WE? </h1>
         <div class="creatorarea1">
             <table>
                 <tr>
@@ -130,10 +144,34 @@
                 </tr>
             </table>
         </div>
-        <br/><br/><br/><br/><br/><br/><br/>
     </div>
-    <div class="aboutexhibition"></div>
-    <div class="aboutpaintings"></div>
+    <div class="aboutexhibition">
+    <center>
+        <h1>The Trailer</h1>
+        <hr style="border: 1px solid black; width: 50%;" />
+        <br/>
+    
+        <video width="60%" height="150%" controls="controls"><source src="images/lv_0_20230505131045.mp4"></video>
+        <br/>
+        <caption><span style="font-size: smaller; background-color: lightcoral;"><i>This was made before the production of this website.</i></span></caption>
+    </center>
+    <br/>
+    </div>
+    <div class="aboutpaintings">
+        <br/>
+        <h1 style="color: white;">The Paintings</h1>
+        <center>
+            <hr style="border: 1px solid white; width: 50%;"/>
+        </center>
+        <div class="artworkcontent">
+            <img src="images/29.png">
+            <img src="images/30.png">
+            <img src="images/27.png">
+            <img src="images/28.png">
+            <img src="images/headertemp.png" style="grid-column: 1 / span 2; width: 90.4%;">
+            <img src="images/25.png" style="grid-column: 1 / span 2; width: 40%; padding: 0 0 0 25%;">
+        </div>
+    </div>
     <div id="footer">
         <p style="text-align: center;">
             Jo-Ri Designs. Made with love. © 2023

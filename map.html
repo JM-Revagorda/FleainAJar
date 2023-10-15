@@ -28,21 +28,22 @@
                     a{
                         text-decoration: none;;
                     }
-            #content{
+            /* #content{
                 padding: 20% 0;
-            }
+            } */
             #footer{
                 padding: 3% 0;
             }
         </style>
+        <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script>
     </head>
 <body>
-    <div id="header">
+    <!-- <div id="header">
         <div class="headers">
             <p style="text-align: center; font-size: 40px;">
                 MAP
             </p>
-        </div>
+        </div> -->
         <!-- <div class="lowersect">
             <ul class="menu">
                 <li><u>MAP</u></li>
@@ -50,12 +51,26 @@
                 <li><a href="index.html">HOME</a></li>
             </ul>
         </div> -->
-    </div>
     <div id="content">
-
+        <center>
+        <img src="images/betamap.png" usemap="#image_map" width="90%">
+        <map name="image_map">
+        <area alt="" title="Under Construction" href="" coords="1433,399,1511,454" shape="rect">
+        <area alt="" title="Back to Lobby" href="index.html" coords="1148,601,1213,687" shape="rect">
+        <area alt="" title="Under Construction" href="" coords="316,746,391,824" shape="rect">
+        <area alt="" title="Under Construction" href="" coords="1063,980,1140,1042" shape="rect">
+        <area alt="" title="Under Construction" href="" coords="695,1081,757,1138" shape="rect">
+        <area alt="" title="More Info" href="about.html" coords="1438,513,1501,617" shape="rect">
+        </map>
+        </center>
+        <h1 style="position: absolute; top: 10%; right: 45%;">The Map</h1>
+        <p style="text-align: center;">Click the red dots or the (i) circle to navigate</p>
     </div>
     <div id="footer">
 
     </div>
+    <script>
+        imageMapResize();
+    </script>
 </body>
 </html>
