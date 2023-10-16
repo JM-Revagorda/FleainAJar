@@ -18,13 +18,13 @@
             .header {
                 grid-column: 2;
                 display: grid;
-                grid-template: 'dat1'
-                               'dat2';
+                grid-template: 'dat2';
                 background-image: url('images/headertemp.png');
                 background-attachment: fixed;
                 background-position: 20% 63%;
                 background-repeat: no-repeat;
                 background-size: 140% 170%;
+                padding: 7% 0;
             }
                 .click{
                     color: white;
@@ -75,15 +75,27 @@
                 position: fixed;
                 top: 0;
                 z-index: 2;
+                height: 100%;
             }
-                .menu{
+                #dat3 hr{
+                    width: 20%;
+                    margin: 0 4%;
+                    border: 1px solid black;
+                }
+                #dat3 p{
+                    padding: 5% 11%;
+                    transition: 0.3s;
+                }
+                    #dat3 p:hover{
+                        background-color: gray;
+                    }
+                /* .menu{
                     margin: 0 -30%;
                 }
                 li{
                         color: black;
                         float: left;
                         display: block;
-                        padding: 100px 40%;
                         transition: 0.3s;
                     }
                     a{
@@ -92,7 +104,8 @@
                     }
                     li:hover{
                         background-color: gray;
-                    }
+                    } */
+
             .content{
                 grid-area: content;
                 grid-column: 2;
@@ -120,15 +133,16 @@
     </head>
 <body>
     <div id="dat3">
-        <ul class="menu">
-            <a href="map.html"><li>MAP</li></a>
-            <a href="about.html"><li><span style="margin: -20%;">ABOUT</span></li></a>
-            <li><u>HOME</u></li>
-        </ul>
+        <img src="images/flea logo final.png" width="20%" style="padding: 3%;">
+        <p>HOME</p>
+        <hr/>
+        <span style="display: block;" onclick="location.href='about.html'" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%;">ABOUT</p></span>
+        <hr/>
+        <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
+        <hr/>
     </div>
     <div class="header">
         <div class="click ar2"><p>&gt;</p></div>
-        <div id="dat1"><img src="images/flea logo final.png" width="8%" style="position: relative; left: 3%; top: 10%;"></div>
         <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
             <center>
                 <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a;">Flea in a jar</h1>
