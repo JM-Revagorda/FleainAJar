@@ -3,7 +3,10 @@ window.addEventListener('load', function(){
     const ctx = canvas.getContext('2d');
     canvas.width = 2000;
     canvas.height = 720;
+    let timer = 1500;
     let entities = [];
+    let gameOver = false;
+    let score = 0;
 
     class InputHandler{
         constructor(){
@@ -42,71 +45,84 @@ window.addEventListener('load', function(){
             if(input.keys.indexOf("ArrowUp") > -1){
                 // this.speed = 0;
                 this.color = 'red';
+                score += 0;
             } else {
                 // this.speed = 5;
                 this.color = 'blue';
+                score += 3;
             }
 
             context.fillStyle = this.color;
             context.fillRect(this.x, this.y, this.width, this.height);
-            // this.x += this.speed;
-            // if (this.x > this.gameWidth - this.width) this.x = this.gameWidth - this.width;
-            // else if (this.x < 0) this.x = 0;
-            // if((this.x + this.width >= this.gameWidth) || (this.x < 0)){
-            //     this.speed = 0;
-            // }
-            // if ((input.keys.indexOf('ArrowUp') > -1)){
-            //     this.x -= this.speed;
-            // } else {
-            //     this.x += this.speed;
-            // }
-
-            // if (this.x + this.width >= this.gameWidth){
-            //     this.speed = 0;
-            // }
-
         }
     }
 
-    class Eye{
-        constructor(gameWidth, gameHeight){
-            this.gameWidth = gameWidth;
-            this.gameHeight = gameHeight;
-            this.width = 100;
-            this.height = 100;
-            this.x = 0;
-            this.y = Math.round(Math.random(5) * 650);
-            this.speed = 0;
-            console.log(this.y);
-            this.maxSpeed = -5;
-            // this.markedForDeleting = false;
-        }
-        draw(context){
-            context.fillStyle = 'black';
-            context.fillRect(this.x, this.y, this.width, this.height);
-        }
-        update(input){
-            if (input.keys.indexOf("ArrowUp") > -1){
-                if (this.speed > this.maxSpeed){
-                    this.speed = this.maxSpeed;
-                } else{
-                    this.speed -= 3;
-                }
-            } 
-            else{ 
-                this.speed = Math.random() * 0.2 + 10;
-            }
-            this.x += this.speed;
+    // class Eye{
+    //     constructor(gameWidth, gameHeight){
+    //         this.gameWidth = gameWidth;
+    //         this.gameHeight = gameHeight;
+    //         this.width = 100;
+    //         this.height = 100;
+    //         this.x = 0;
+    //         this.y = Math.round(Math.random(5) * 650);
+    //         this.speed = 0;
+    //         console.log(this.y);
+    //         this.maxSpeed = -5;
+    //         // this.markedForDeleting = false;
+    //     }
+    //     draw(context){
+    //         context.fillStyle = 'black';
+    //         context.fillRect(this.x, this.y, this.width, this.height);
+    //     }
+    //     update(input){
+    //         if (input.keys.indexOf("ArrowUp") > -1){
+    //             if (this.speed > this.maxSpeed){
+    //                 this.speed = this.maxSpeed;
+    //             } else{
+    //                 this.speed -= 3;
+    //             }
+    //         } 
+    //         else{ 
+    //             this.speed = Math.random() * 0.2 + 10;
+    //         }
+    //         this.x += this.speed;
 
-            if(this.x < -20){
-                this.x = -20;
-            }
-            // if (this.x >= this.gameWidth / 2 * 0.5){ 
-            //     this.markedForDeleting = true;
-            // }
+    //         if(this.x < -20){
+    //             this.x = -20;
+    //         }
+    //         // if (this.x >= this.gameWidth / 2 * 0.5){ 
+    //         //     this.markedForDeleting = true;
+    //         // }
+    //     }
+    // }
+
+//    let steps = 0;
+    function Timer(entity){
+        if(entity.color != "red"){
+            timer--;
         }
+        else{
+            timer += 3;
+        }
+        if(timer > 1500) timer = 1500;
+        //Game Over mechanic
+        else if(timer > 0) gameOver = true;
     }
 
+    function displayText(context, gameWidth, gameHeight){
+        context.font = "20px Arial";
+        context.fillStyle = "black";
+        context.fillText("Timer: " + timer, 20, 50);
+        context.font = "20px Arial";
+        context.fillStyle = "black";
+        context.fillText("Score: " + Math.round(score * 0.6), 20, 100);
+        if(gameOver){
+            context.font = "40px Arial";
+            context.fillStyle = "black";
+            context.fillText("Game Over!", gameWidth / 2, gameHeight / 2);
+            console.log(score);
+        }
+    }
     // function handleEnemies(deltaTime){
     //     if (entityTimer > entityInterval + randomEntityInterval){
     //         entities.push(new Eye(canvas.width, canvas.height));
@@ -125,23 +141,23 @@ window.addEventListener('load', function(){
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
-    const eye = new Eye(canvas.width, canvas.height);
+    // const eye = new Eye(canvas.width, canvas.height);
 
-    let lastTime = 0;
-    let entityTimer = 0;
-    let entityInterval = 500;
-    let randomEntityInterval = Math.random() * 100 + 20;
+    // let lastTime = 0;
+    // let entityTimer = 0;
+    // let entityInterval = 500;
+    // let randomEntityInterval = Math.random() * 100 + 20;
 
-    function animate(timeStamp){
-        // const deltaTime = timeStamp - lastTime;
-        // lastTime = timeStamp;
+    function animate(){
+        Timer(player);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         player.draw(ctx);
         player.update(input, ctx);
         // handleEnemies(deltaTime);
-        eye.draw(ctx);
-        eye.update(input);
-        requestAnimationFrame(animate);
+        // eye.draw(ctx);
+        // eye.update(input);
+        displayText(ctx, canvas.width, canvas.height);
+        if(!gameOver){requestAnimationFrame(animate);}
     }
-    animate(0);
+    animate();
 });
