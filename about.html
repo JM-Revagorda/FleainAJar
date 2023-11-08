@@ -39,6 +39,11 @@
                     text-align: center;
                     transition: 0.3s;
                 }
+                .lowersect #contact{
+                    padding: 10% 20%;
+                    text-align: center;
+                    transition: 0.3s;
+                }
                     .lowersect p:hover{
                         background-color: gray;
                     }
@@ -63,6 +68,7 @@
                     padding: 25% 0;
                     background-image: url("images/testign.gif");
                     background-repeat: no-repeat;
+                    background-attachment: fixed;
                     background-size: cover;
                 }
                 #headers{
@@ -171,10 +177,10 @@
             }
                 .text-area{
                     width: 80ch;
-                    padding: 5%;
+                    padding: 15% 5%;
                     overflow-y: scroll;
-                    color: white;
-                    background-color: rgb(0, 0, 0, 0.4);
+                    color: black;
+                    /* background-color: rgb(0, 0, 0, 0.4); */
                 }
                 @keyframes paintings {
                     from{top: -5%; opacity: 0;}
@@ -188,9 +194,11 @@
         <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
         <span style="display: block;" onclick="location.href='index.html'" onmouseover="this.style.cursor = 'pointer'"><p>HOME</p></span>
         <hr/>
-        <span style="display: block;" onclick="location.href=' '" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%;">ABOUT</p></span>
+        <span style="display: block;" onclick="location.href=' '" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%; background-color: #6a3d36;" >ABOUT</p></span>
         <hr/>
         <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
+        <hr/>
+        <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
         <hr/>
     </div>
     <div id="header" style="background-color: white;">
@@ -279,9 +287,9 @@
 
     <!-- Modals -->
     <div class="modal">
-        <table class="detailedPaint" style="background-image: url('images/print\ 3\ bg.png'); background-size: contain;">
+        <table class="detailedPaint">
             <tr>
-                <td style="text-align: center;"><img src="images/29.png" width="110%"/></td>
+                <td style="text-align: center;"><img src="images/29.png" width="110%" style="border-right: 2px red solid;"/></td>
                 <td class="text-area">
                     <h1>Bipolar</h1>
                     <br/>
@@ -351,7 +359,7 @@
         <table class="detailedPaint" style="background-image: url('images/print\ 2\ bg.png'); background-size: contain;">
             <tr>
                 <td style="text-align: center;"><img src="images/28.png" width="110%"/></td>
-                <td class="text-area">
+                <td class="text-area darker">
                     <h1>Blank</h1>
                     <br/>
                     <hr style="text-align: left; margin: 0 0 0 3%; width: 30%; border: 1px solid white;"/>

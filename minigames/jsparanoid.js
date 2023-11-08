@@ -96,17 +96,19 @@ window.addEventListener('load', function(){
     //     }
     // }
 
-//    let steps = 0;
+    let steps = 0;
     function Timer(entity){
         if(entity.color != "red"){
-            timer--;
+            timer -= steps + 1;
         }
         else{
             timer += 3;
         }
         if(timer > 1500) timer = 1500;
         //Game Over mechanic
-        else if(timer > 0) gameOver = true;
+        else if(timer < 0) gameOver = true;
+
+        if (score % 500 == 0) steps += 1;
     }
 
     function displayText(context, gameWidth, gameHeight){
@@ -115,7 +117,7 @@ window.addEventListener('load', function(){
         context.fillText("Timer: " + timer, 20, 50);
         context.font = "20px Arial";
         context.fillStyle = "black";
-        context.fillText("Score: " + Math.round(score * 0.6), 20, 100);
+        context.fillText("Score: " + Math.round(score * 0.4), 20, 100);
         if(gameOver){
             context.font = "40px Arial";
             context.fillStyle = "black";

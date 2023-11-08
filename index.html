@@ -13,37 +13,51 @@
                 grid-template-columns: 15% auto;
                 grid-template-rows: auto auto "footer"; 
             }
-            .header, .content, .footer{
+            /* .header, .content, .footer{
                 z-index: 2;
+            } */
+            .slideContainer{
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
             }
+                .slideContainer .slide{
+                    display: none;
+                }
             .header {
                 grid-column: 1 / span 2;
                 display: grid;
                 grid-template: 'dat2';
-                background-image: url('images/headertemp.png');
+                /* background-image: url('images/headertemp.png');
                 background-attachment: fixed;
                 background-position: 40%;
                 background-repeat: no-repeat;
-                background-size: 140% 200%;
+                background-size: 140% 200%; */
                 padding: 15% 0;
             }
-                #overlay{
+                .overlay{
                     width: 100%;
                     height: 100%;
-                    
+                    position: fixed;
+                    z-index: 3;
+                    background-color: rgb(0,0,0, 0.4);
                 }
                 .click{
-                    color: white;
+                    color: black;
                     font-size: 50px;
                     position: absolute;
+                    z-index: 3; 
                 }
                     .ar1{
                         top: 40%;
                         left: 5%;
+                        z-index: 3;
                     }
                     .ar2{
                         top: 40%;
                         right: 5%;
+                        z-index: 3;
                     }
                     /* .click:hover{
                         cursor:pointer;
@@ -51,6 +65,7 @@
                     } */
                 #dat1, #dat2, #dat3{
                     margin: 0px;
+                    z-index: 4;
                     /* border: 1px solid palevioletred; */
                 }
                     .dots{
@@ -61,6 +76,7 @@
                         display: inline-block;
                         margin: 0 10px;
                         transition: 0.3s;
+                        z-index: 13;
                     }
                         .dots:hover{
                             cursor: pointer;
@@ -68,6 +84,13 @@
                             width: 20px;
                             height: 20px;
                         }
+                            .active{
+                                background-color: white;
+                                width: 20px;
+                                height: 20px;
+                            }
+                    .headerimg{position: fixed; top: -50%; left: -20%}
+                    .paranoia{position: fixed; top: -10%; left: 0%}
                 /* #dat1{padding: 2% 0;} */
                 /* #dat2{padding: 0 0 % 0;} */
                 /* #dat3{padding: 0 0;} */
@@ -95,9 +118,17 @@
                     text-align: center;
                     transition: 0.3s;
                 }
+                #dat3 #contact{
+                    padding: 10% 20%;
+                    text-align: center;
+                    transition: 0.3s;
+                }
                     #dat3 p:hover{
                         background-color: gray;
                     }
+                #dat3 .currentPage{
+                        background-color: #6a3d36;
+                }
             html:not([data-scroll='0']) #dat3{
 				background-color: rgb(8,181,198,25);
                 color: black
@@ -126,6 +157,7 @@
                 display: grid;
                 grid-template: '.image' '.text';
                 background-image: url('images/paper\ texture.jpg');
+                z-index: 4;
             }
                 .image{
                     object-fit: contain;
@@ -141,40 +173,65 @@
                 grid-row: 3;
                 grid-column: 2;
                 padding: 2% 0;
+                z-index: 5;
             }
+
+        /* Animations */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
         </style>
     </head>
 <body>
     <div id="dat3">
         <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
-        <p>HOME</p>
+        <p class="currentPage">HOME</p>
         <hr/>
         <span style="display: block;" onclick="location.href='about.html'" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%;">ABOUT</p></span>
         <hr/>
         <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
         <hr/>
+        <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
+        <hr/>
+    </div>
+    <span class="click ar2">&#10095;</span>
+    <div class="slideContainer">
+        <div class="slide fade headerimg">
+            <img src="images/headertemp.png" width="120%">
+        </div>
+        <div class="slide fade paranoia">
+            <img src="images/print 1.png" width="100%">
+        </div>
+        <div class="slide fade blank">
+            <img src="images/print 2.png" width="100%" style="position: fixed; top: -30%; left: 0%; background-image: url('images/print\ 2\ bg.png');">
+        </div>
     </div>
     <div class="header">
-            <div class="click ar2"><p>&gt;</p></div>
             <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
                 <center>
-                    <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a;">Flea in a jar</h1>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <p style="letter-spacing: 20px; color: #a8030a; font-size: 16px;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
-                    <br/>
-                    <p style="color: rgb(0,0,0);"><strong>Unleash the jar, Unleash the flea<br/>
-                A reminder to others who are still caught like fleas in a jar</strong></p>
+                <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a; z-index: 6;">Flea in a jar</h1>
+                <br/>
+                <br/>
+                <br/>
+                <p style="letter-spacing: 20px; color: #a8030a; font-size: 16px;"><b>TUKMA SOLO EXHIBITION 2023</b></p>
+                <br/>
+                <p style="color: rgb(255, 255, 255);"><strong>Unleash the jar, Unleash the flea<br/>
+                    A reminder to others who are still caught like fleas in a jar</strong></p>
                 </center>
                 <br/>
                 <br/>
                 <br/>
             </div>
             <div style="text-align: center;">
-                <span class="dots"></span>
-                <span class="dots"></span>
-                <span class="dots"></span>
+                    <span class="dots"></span>
+                    <span class="dots"></span>
+                    <span class="dots"></span>
             </div>
     </div>
     <div class="content">
@@ -219,6 +276,15 @@
         </p>
     </div>
 
+    <!-- Miscelaneous -->
+    <div class="overlay"></div>
+
+
+
+
+
+
+
     <script>
         const debounce = (fn) => {
 			let frame;
@@ -239,6 +305,7 @@
 		document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 		storeScroll();
 
+        //SlideshowControls(for header disappearing)
         const dataheader = document.getElementById("dat2");
         const arrowRight = document.getElementsByClassName("ar2")[0];
 
@@ -258,8 +325,54 @@
                 dataid.style.opacity = i + "";
             }
         }
-        // function headertest(){
-        //     const target = document.getElementById("dat2");
+
+        // Slideshow Time!
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+        // let slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // // Next/previous controls
+        // function plusSlides(n) {
+        // showSlides(slideIndex += n);
+        // }
+
+        // // Thumbnail image controls
+        // function currentSlide(n) {
+        // showSlides(slideIndex = n);
+        // }
+
+        // function showSlides(n) {
+        // let i;
+        // let slides = document.getElementsByClassName("slide");
+        // let dots = document.getElementsByClassName("dots");
+        // if (n > slides.length) {slideIndex = 1}
+        // if (n < 1) {slideIndex = slides.length}
+        // for (i = 0; i < slides.length; i++) {
+        //     slides[i].style.display = "none";
+        // }
+        // for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        // }
+        // slides[slideIndex-1].style.display = "block";
+        // dots[slideIndex-1].className += " active";
+
+        // // slideIndex++;
+        // // if (slideIndex > slides.length) {slideIndex = 1}
+        // // slides[slideIndex-1].style.display = "block";
+        // setTimeout(showSlides, 2000); // Change image every 2 seconds
         // }
     </script>
 </body>
