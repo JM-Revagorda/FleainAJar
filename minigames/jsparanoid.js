@@ -31,7 +31,7 @@ window.addEventListener('load', function(){
         constructor(gameWidth, gameHeight){
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
-            this.width = 260;
+            this.width = 271;
             this.height = 348;
             this.x = this.gameWidth / 2 * 1.1;
             this.y = this.gameHeight - this.height;
@@ -48,8 +48,8 @@ window.addEventListener('load', function(){
         draw(context){
             //fillRect(x, y, h, w) - Creates a Rectangle
             //drawImage(image *must have an <img> tag*, source x, source y, source width, source height, destx, desty, destwidth, destheight) - creates the sprites we know of today
-            context.fillStyle = "black";
-            context.fillRect(this.x, this.y, this.width, this.height);
+            // context.fillStyle = "black";
+            // context.fillRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, 0 * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input, deltaTime){
