@@ -13,6 +13,7 @@
                 grid-template-rows: auto auto auto auto "footer";
                 background-image: url('images/sticker bg.png');
                 background-attachment: fixed;
+                overflow-x: hidden;
             }
             #header, #content, #footer{
                 /* border: 1px solid magenta; */
@@ -28,6 +29,7 @@
                     height: 100%;
                     width: 15%;
                     line-height: 50px;
+                    z-index: 5;
                 }
                 .lowersect hr{
                     width: 80%;
@@ -64,13 +66,33 @@
                 #header{
                     grid-column: 2;
                 }
+                #overlayheader{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    background-color: rgb(0,0,0,0.4);
+                    padding: 20% 0 0 10%;
+                }
                 .headers{
                     padding: 25% 0;
-                    background-image: url("images/testign.gif");
+                    /* background-image: url("images/testign.gif");
                     background-repeat: no-repeat;
                     background-attachment: fixed;
-                    background-size: cover;
+                    background-size: cover; */
                 }
+                .slideContainer{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    background-color: black;
+                }
+                    .slideContainer .slide{
+                        display: none;
+                    }
                 #headers{
                     grid-column: 2;
                 }
@@ -186,26 +208,51 @@
                     from{top: -5%; opacity: 0;}
                     to {top: 5%; opacity: 1;}
                 }
+                .fade {
+                    animation-name: fade;
+                    animation-duration: 1.5s;
+                }
+
+                @keyframes fade {
+                    from {opacity: .4}
+                    to {opacity: 1}
+                }
 
         </style>
     </head>
 <body>
     <div class="lowersect">
         <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
-        <span style="display: block;" onclick="location.href='index.html'" onmouseover="this.style.cursor = 'pointer'"><p>HOME</p></span>
+        <span style="display: block;" onclick="location.href='home.html'" onmouseover="this.style.cursor = 'pointer'"><p>HOME</p></span>
         <hr/>
         <span style="display: block;" onclick="location.href=' '" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%; background-color: #6a3d36;" >ABOUT</p></span>
         <hr/>
-        <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
+        <span style="display: block;" onclick="location.href='index.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
         <hr/>
         <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
         <hr/>
     </div>
     <div id="header" style="background-color: white;">
         <div class="headers">
-            <p style="text-align: center; font-size: 40px; color: white;">
-                <b>ABOUT</b>
-            </p>
+            <div class="slideContainer">
+                <div class="slide fade">
+                    <img src="images/20230418_212452.jpg" width="120%" style="position: relative; top: 0; left: 15%;">
+                </div>
+                <div class="slide fade">
+                    <img src="images/20230419_130441.jpg" width="30%" style="position: relative; top: 300%; left: 45%;">
+                </div>
+                <div class="slide fade img3">
+                    <img src="images/20230420_173306.jpg" width="50%" style="position: relative; top: -30%; left: 35%;">
+                </div>
+                <div class="slide fade img4">
+                    <img src="images/20230420_174938.jpg" width="40%" style="position: relative; top: -50%; left: 40%;">
+                </div>
+            </div>
+            <div id="overlayheader">
+                <h1 style="text-align: center; font-size: 40px; color: white; z-index: 6;">
+                    <b>ABOUT</b>
+                </h1>
+            </div>
         </div>
     </div>
     <div id="content" style="background-image: url('images/papertexturecutout.png');">
@@ -304,9 +351,9 @@
         </table>
     </div>
     <div class="modal">
-        <table class="detailedPaint" style="background-image: url('images/print\ 4\ bg.png'); background-size: contain;">
+        <table class="detailedPaint">
             <tr>
-                <td style="text-align: center;"><img src="images/30.png" width="110%"/></td>
+                <td style="text-align: center;"><img src="images/30.png" width="110%" style="border-right: 2px red solid;"/></td>
                 <td class="text-area">
                     <h1>Anxiety</h1>
                     <br/>
@@ -330,9 +377,9 @@
         </table>
     </div>
     <div class="modal">
-        <table class="detailedPaint" style="background-image: url('images/print\ 1\ bg.png'); background-size: contain;">
+        <table class="detailedPaint">
             <tr>
-                <td style="text-align: center;"><img src="images/27.png" width="110%"/></td>
+                <td style="text-align: center;"><img src="images/27.png" width="110%" style="border-right: 2px red solid;"/></td>
                 <td class="text-area">
                     <h1>Paranoia</h1>
                     <br/>
@@ -356,9 +403,9 @@
         </table>
     </div>
     <div class="modal">
-        <table class="detailedPaint" style="background-image: url('images/print\ 2\ bg.png'); background-size: contain;">
+        <table class="detailedPaint">
             <tr>
-                <td style="text-align: center;"><img src="images/28.png" width="110%"/></td>
+                <td style="text-align: center;"><img src="images/28.png" width="110%" style="border-right: 2px red solid;"/></td>
                 <td class="text-area darker">
                     <h1>Blank</h1>
                     <br/>
@@ -382,9 +429,9 @@
         </table>
     </div>
     <div class="modal">
-        <table class="detailedPaint" style="background-image: url('images/print\ 3\ bg.png'); background-size: contain;">
+        <table class="detailedPaint">
             <tr>
-                <td style="text-align: center;"><img src="images/29.png" width="110%"/></td>
+                <td style="text-align: center;"><img src="images/29.png" width="110%" style="border-right: 2px red solid;"/></td>
                 <td class="text-area">
                     <h1>Who I Am</h1>
                     <br/>
@@ -441,6 +488,21 @@
             modal.style.display = "none";
         }
         };
+        //For Automatic Slideshow
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
     </script>
 </body>
 </html>
