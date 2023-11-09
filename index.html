@@ -1,154 +1,382 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Flea In A Jar</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
         <style>
-            *{margin: 0;}
+            *{
+                font-family: Arial, helvetica;
+                margin: 0px;
+            }
             body{
                 display: grid;
-                grid-template: "content";
-                font-family: Arial;
-                overflow-x: hidden;
-                background-color: rgba(8,181,198,255);
+                grid-template-columns: 15% auto;
+                grid-template-rows: auto auto "footer"; 
             }
-            /* #header, #content, #footer{
-                border: 1px solid magenta;
+            /* .header, .content, .footer{
+                z-index: 2;
             } */
-                .headers{padding: 2% 0;}
-                .lowersect{
-                    padding: 2% 0;
-                    border: 1px dashed goldenrod;
-                }
-                    .menu{
-                        list-style-type: none;
-                    }
-                    li{
-                        float: right;
-                        margin: 0 10px;
-                    }
-                    a{
-                        text-decoration: none;;
-                    }
-                    #mapareas{
-                        text-align: center;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                    }
-            /* #content{
-                padding: 20% 0;
-            } */
-			
-            footer {
+            .slideContainer{
                 position: absolute;
-                top: 105%;
-                width: 98.7%;
-				background-color: #333;
-				color: #fff;
-				text-align: center;
-				padding: 12px;
-			}
-
-            dialog{
-                position: fixed;
-                top: 10%;
-                left: 25%;
-                width: 50%;
-                padding: 5% 2%;
-                /* width: 30%;
-                padding: 5% 10%;
-                background-color: white;
-                z-index: 3; */
+                top: 0;
+                left: 0;
+                z-index: 3;
             }
-                dialog img{
-                    filter: grayscale(100%);
+                .slideContainer .slide{
+                    display: none;
+                }
+            .header {
+                grid-column: 1 / span 2;
+                display: grid;
+                grid-template: 'dat2';
+                /* background-image: url('images/headertemp.png');
+                background-attachment: fixed;
+                background-position: 40%;
+                background-repeat: no-repeat;
+                background-size: 140% 200%; */
+                padding: 15% 0;
+            }
+                .overlay{
+                    width: 100%;
+                    height: 100%;
+                    position: fixed;
+                    z-index: 3;
+                    background-color: rgb(0,0,0, 0.4);
+                }
+                .click{
+                    color: black;
+                    font-size: 50px;
+                    position: absolute;
+                    z-index: 3; 
+                }
+                    .ar1{
+                        top: 40%;
+                        left: 5%;
+                        z-index: 3;
+                    }
+                    .ar2{
+                        top: 40%;
+                        right: 5%;
+                        z-index: 3;
+                    }
+                    /* .click:hover{
+                        cursor:pointer;
+                        text-shadow: 0 0 5px gray;
+                    } */
+                #dat1, #dat2, #dat3{
+                    margin: 0px;
+                    z-index: 4;
+                    /* border: 1px solid palevioletred; */
+                }
+                    .dots{
+                        height: 15px;
+                        width: 15px;
+                        background-color: #bbb;
+                        border-radius: 50%;
+                        display: inline-block;
+                        margin: 0 10px;
+                        transition: 0.3s;
+                        z-index: 13;
+                    }
+                        .dots:hover{
+                            cursor: pointer;
+                            background-color: white;
+                            width: 20px;
+                            height: 20px;
+                        }
+                            .active{
+                                background-color: white;
+                                width: 20px;
+                                height: 20px;
+                            }
+                    .headerimg{position: fixed; top: -50%; left: -20%}
+                    .paranoia{position: fixed; top: -10%; left: 0%}
+                /* #dat1{padding: 2% 0;} */
+                /* #dat2{padding: 0 0 % 0;} */
+                /* #dat3{padding: 0 0;} */
+            #dat3{
+                background-color: rgba(0,0,0,0);
+                grid-column: auto;
+                grid-row: auto;
+                display: block;
+                position: fixed;
+                top: 0;
+                z-index: 5;
+                height: 100%;
+                width: 15%;
+                line-height: 50px;
+                transition: 0.2s;
+                color: black;
+            }
+                #dat3 hr{
+                    width: 80%;
+                    margin: 0 10%;
+                    border: 1px solid black;
+                }
+                #dat3 p{
+                    padding: 10% 35%;
+                    text-align: center;
                     transition: 0.3s;
                 }
-                dialog img:hover{
-                    filter:grayscale(0%);
+                #dat3 #contact{
+                    padding: 10% 20%;
+                    text-align: center;
+                    transition: 0.3s;
                 }
-            table{
-                /* border: 1px solid black; */
-                text-align: center;
-            }
-            .close{
-                position: absolute;
-                top: 5%;
-                right: 5%;
-                font-size: 30px;
-            }
-                .close:hover{
-                    cursor: pointer;
+                    #dat3 p:hover{
+                        background-color: #733832;
+                    }
+                #dat3 .currentPage{
+                        background-color: #F2ECEB;
                 }
+            html:not([data-scroll='0']) #dat3{
+				background-color: #303240;
+                color: white
+			}
+                /* .menu{
+                    margin: 0 -30%;
+                }
+                li{
+                        color: black;
+                        float: left;
+                        display: block;
+                        transition: 0.3s;
+                    }
+                    a{
+                        color: black;
+                        text-decoration: none;
+                    }
+                    li:hover{
+                        background-color: gray;
+                    } */
 
+            .content{
+                grid-area: content;
+                grid-column: 2;
+               
+                display: grid;
+                grid-template: '.image' '.text';
+                background-image: url('images/paper\ texture.jpg');
+				background-size: 500px ;
+                z-index: 4;
+            }
+                .image{
+                    object-fit: contain;
+                    object-position: -30% 40%;
+                    filter: drop-shadow(0 5px 7px black);
+                }
+                .text{
+               
+                    padding: 5% 0%;
+                }
+             .footer {
+                background-color: #733832;
+                grid-row: 3;
+                grid-column: 2;
+                padding: 2% 0;
+                z-index: 5;
+            }
+
+        /* Animations */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
         </style>
-        <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script>
     </head>
 <body>
-    <!-- <div id="header">
-        <div class="headers">
-            <p style="text-align: center; font-size: 40px;">
-                MAP
-            </p>
-        </div> -->
-        <!-- <div class="lowersect">
-            <ul class="menu">
-                <li><u>MAP</u></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="index.html">HOME</a></li>
-            </ul>
-        </div> -->
-    <div id="content">
-        <h1 style="position: absolute; top: 8%; left: 5.7%; font-size: 90px; color: #e60000; text-shadow: 2px 2px 4px #000000; z-index: 4;">Map</h1>
-		<p style="position: absolute; top: 23%; left: 6.2%; font-size: 20px; z-index: 4;">
-            Click on the circles to navigate.<br/> 
-            Hover over them to know where your going.<br/> 
+    <div id="dat3">
+        <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
+        <p class="currentPage">HOME</p>
+        <hr/>
+        <span style="display: block;" onclick="location.href='about.html'" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%;">ABOUT</p></span>
+        <hr/>
+        <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
+        <hr/>
+        <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
+        <hr/>
+    </div>
+    <span class="click ar2">&#10095;</span>
+    <div class="slideContainer">
+        <div class="slide fade headerimg">
+            <img src="images/slide1.jpg" width="120%">
+        </div>
+        <div class="slide fade paranoia">
+            <img src="images/slide2.jpg" width="100%">
+        </div>
+        <div class="slide fade blank">
+            <img src="images/slide3.jpg" width="100%" style="position: fixed; top: -30%; left: 0%; background-image: url('images/print\ 2\ bg.png');">
+		</div>
+		<div class="slide fade paranoia">
+            <img src="images/testing.png" width="100%">
+        </div>
+    </div>
+    <div class="header">
+            <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
+                <center>
+                <h1 style="letter-spacing: 8px; font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a; z-index: 6;"><br><br>Flea in a jar</h1>
+                <br/>
+                <br/>
+                <br/>
+                <p style="letter-spacing: 19px; color: #F2ECEB; font-size: 30px;"><strong>TUKMA SOLO EXHIBITION 2023</strong></p>
+                <br/>
+             
+                </center>
+                <br/>
+                <br/>
+                <br/>
+            </div>
+            <div style="text-align: center;">
+                    <span class="dots"></span>
+                    <span class="dots"></span>
+                    <span class="dots"></span>
+            </div>
+    </div>
+    <div class="content">
+        <div class="image">
+            <img src="images/annonymous (2).png" width="80%" style="float: right;">
+        </div>
+        <div class="text">
+            <h1 style="font-size:50px; color: #733832 "><br>ARTIST STATEMENT</h1>
+           
+            <p style="font-size: 20px;">
+                <br><br><strong>A sense of hopelessness, pressure, and
+                despair— Flea in a jar is an<br>experiment
+                where fleas are trapped inside a jar and
+                will jump repeatedly<br> until they learn
+                that hitting the lid is painful. When the
+                lid is removed,<br>they will only jump as
+                high as the lid. Dealing with mental
+                health alone,<br>one feels they are confined
+                to a tight space and are unable to move.<br>
+                Constantly jumping from one problem
+                to another, unable to break<br>free of this
+                never-ending loop.<br/>
+                <br/>
+                Flea in a jar a series focuses on one
+                anonymous red subject, a crumpled<br>
+                paper cutout.The series features
+                dissociation from reality, a sensation of<br>
+                alienation from oneselfand one's
+                surroundings. a space where you can<br>
+                express your feelings<br/>
+                <br/>
+                This is our catharsis to reduce stigma
+                and educate the public.<br> And a reminder
+                to others who are still caught like fleas
+                in a jar.</strong><br/></p>
+        </div>
+    </div>
+    <div class="footer">
+        <p style="text-align: center;color: white;">
+            Jo-Ri Designs. Made with love. © 2023 <br/>
+            <a href="contacts.html" style="text-decoration: none; color: white;">Contact Us!</a>
         </p>
-        <center>
-        <img src="images/map2nddraft.jpg" usemap="#image_map" id="mapareas">
-        <!-- <img src="map2nddraft.jpg" usemap="#image_map"> -->
-        <map name="image_map">
-        <area alt="" title="Home Page" href="home.html" coords="1495,359,1556,404" shape="rect">
-        <area alt="" title="About Us" href="about.html" coords="1372,732,1418,790" shape="rect">
-        <area alt="" title="Contacts" href="contacts.html" coords="617,732,670,778" shape="rect">
-        <area alt="" title="Interactivity Begin" onclick="openDialog()" onmouseover="this.style.cursor = 'pointer'" coords="818,369,871,414" shape="rect">
-        </map>
-        </center>
-	</div>
-    <footer>
-       <p>&copy; 2023 Flea in a Jar</p>
-    </footer>
+    </div>
 
-    <dialog>
-        <span class="close" onclick="closeDialog()">&#10005;</span>
-        <table>
-            <tr>
-                <td style="border-bottom: 3px solid red;"><h4>Choose a painting to start interactivity</h4><br/></td>
-            </tr>
-            <tr>
-                <td><br/><a href="minigames/paranoia.html" target="_blank" title="Prototype MURDER-like"><img src="images/print 1.png" width="40%"></a></td>
-            </tr>
-            <tr>
-                <td>Paranoia</td>
-            </tr>
-        </table>
-    </dialog>
-     <script>
-        document.onmousemove = function(){
-            var x = event.screenX * 0.03;
-            var y = event.screenY * 0.03;
-            document.getElementById("mapareas").style.left = x + "px";
-            document.getElementById("mapareas").style.top = y + "px";
+    <!-- Miscelaneous -->
+    <div class="overlay"></div>
+
+
+
+
+
+
+
+    <script>
+        const debounce = (fn) => {
+			let frame;
+			return (...params) => {
+				if (frame){
+					cancelAnimationFrame(frame);
+				}
+
+				frame = requestAnimationFrame(() => {
+					fn(...params);
+				});
+			}
+		};
+
+		const storeScroll = () => {
+			document.documentElement.dataset.scroll = window.scrollY;
+		}
+		document.addEventListener('scroll', debounce(storeScroll), {passive: true});
+		storeScroll();
+
+        //SlideshowControls(for header disappearing)
+        const dataheader = document.getElementById("dat2");
+        const arrowRight = document.getElementsByClassName("ar2")[0];
+
+        arrowRight.style.transition = "0.3";
+
+        arrowRight.onmouseover = function(){
+            dataheader.style.opacity = "0.0";
+            arrowRight.style.cursor = "pointer";
+        }
+        arrowRight.onmouseout = function(){
+            animationlooptest(dataheader);
+            dataheader.style.opacity = "1.0";
         }
 
-        const dialog = document.querySelector("dialog");
+        function animationlooptest(dataid){
+            for(var i = 0; i < 1; i += 0.1){
+                dataid.style.opacity = i + "";
+            }
+        }
 
-        function openDialog(){
-            dialog.showModal();
+        // Slideshow Time!
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-        function closeDialog(){
-            dialog.close();
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+        slides[slideIndex-1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
-     </script>
+        // let slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // // Next/previous controls
+        // function plusSlides(n) {
+        // showSlides(slideIndex += n);
+        // }
+
+        // // Thumbnail image controls
+        // function currentSlide(n) {
+        // showSlides(slideIndex = n);
+        // }
+
+        // function showSlides(n) {
+        // let i;
+        // let slides = document.getElementsByClassName("slide");
+        // let dots = document.getElementsByClassName("dots");
+        // if (n > slides.length) {slideIndex = 1}
+        // if (n < 1) {slideIndex = slides.length}
+        // for (i = 0; i < slides.length; i++) {
+        //     slides[i].style.display = "none";
+        // }
+        // for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        // }
+        // slides[slideIndex-1].style.display = "block";
+        // dots[slideIndex-1].className += " active";
+
+        // // slideIndex++;
+        // // if (slideIndex > slides.length) {slideIndex = 1}
+        // // slides[slideIndex-1].style.display = "block";
+        // setTimeout(showSlides, 2000); // Change image every 2 seconds
+        // }
+    </script>
 </body>
 </html>
