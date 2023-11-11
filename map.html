@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flea In A Jar</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <style>
+            *{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            body{
+                overflow-x: hidden;
+                background-color: rgb(12,179,195);
+            }
+            img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            .intro{
+                position: absolute;
+                z-index: 2;
+            }
+            p .intro{
+                top: 5%;
+                left: 5%;
+            }
+            h1 .intro{
+                top: 10%;
+                left: 5%;
+            }
+            .footer{
+                position: absolute;
+                top: 90%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                z-index: 3;
+            }
+            dialog{
+                width: 30%;
+                margin: auto;
+                background-color: white;
+                text-align: center;
+            }
+            #instruct1{
+                display: none;
+            }
+                .games{
+                    filter: grayscale(100%);
+                    transition: 0.3s;
+                }
+                .games:hover{
+                    filter: grayscale(0%);
+                }
+                dialog .games:hover + #instruct1{
+                    display: block;
+                }
+            .close_button{
+                position: relative;
+                top: 0;
+                right: -45%;
+                font-size: 40px;
+            }
+                .close_button:hover{
+                    cursor: pointer;
+                }
+        </style>
+    </head>
+<body>
+    <p class="intro">Welcome to the...</p>
+    <h1 class="intro">Navigation Map!</h1>
+    <img id="mapimg" src="images/map2nddraft.jpg" usemap="#image_map">
+        <map name="image_map">
+        <area alt="Home Page" title="Home Page" href="index.html" coords="1485,362,1565,408" shape="rect">
+        <area alt="About Us" title="About Us" href="about.html" coords="1349,731,1426,782" shape="rect">
+        <area alt="Contact Us" title="Contact Us" href="contact.html" coords="612,736,678,785" shape="rect">
+        <area alt="" title="Shall we play a game?" onclick="openDialog()" onmouseover="this.style.cursor='pointer'" coords="804,364,884,413" shape="rect">
+        </map>
+      
+    <div class="footer">
+        <p style="text-align: center;">
+            Jo-Ri Designs. Made with love. © 2023 <br/>
+            <a href="contacts.html" style="text-decoration: none; color: black;">Contact Us!</a>
+        </p>
+    </div>
+
+    <dialog>
+        <span class="close_button" onclick="closeDialog()">&times;</span>
+        <table>
+            <tr>
+                <td>
+                    Lorem Ipsum<br/>
+                    <hr style="width: 70%; border: 2px solid red"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="minigames/paranoia.html" class="games">
+                        <img src="images/print 1.png" width="50%" style="position: relative;">
+                    </a>
+                    <p id="instruct1">
+                        How far can you go before the timer runs out?<br/>
+                        Press the Up Arrow Key to replenish, and release to keep going
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </dialog>
+    <script>
+        var image = document.getElementById("mapimg");
+        const dialog = document.querySelector("dialog");
+        document.addEventListener('mousemove',function(e){
+            var mouseX = e.screenX;
+            var mouseY = e.screenY;
+
+            image.style.top = mouseY * 0.03 + "px";
+            image.style.left = mouseX * 0.03 + "px";
+        });
+        function openDialog(){
+            dialog.showModal();
+        }
+        function closeDialog(){
+            dialog.close();
+        }
+        // let gameIndex = 0; 
+        // document.addEventListener('mouseover', function(){
+        //     let i;
+        //     let game = document.getElementsByClassName("games");
+        //     for
+        // });
+
+        // var instruct = document.getElementById("instructions");
+        // var game = document.getElementsByClassName("games");
+
+        // function setDataIndex(){
+        //     for(var i = 0; i < game.length; i++){
+        //         game[i].setAttribute('data-index', i);
+        //     }
+        // }
+        imageMapResize();
+    </script>
+    <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script>
+</body>
+</html>
