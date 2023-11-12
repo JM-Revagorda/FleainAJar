@@ -60,7 +60,7 @@ window.addEventListener('load', function(){
             } else {
                 // this.speed = 5;
                 // this.color = 'blue';
-                score += 3;
+                score += Math.round(3 * 0.6);
             }
 
             //Animation
@@ -101,22 +101,6 @@ window.addEventListener('load', function(){
 
             if(input.keys.indexOf("ArrowUp") > -1) this.speed = 0;
             else this.speed = 7;
-        }
-    }
-
-    class Dark{
-        constructor(gameHeight, gameWidth){
-            this.gameHeight = gameHeight;
-            this.gameWidth = gameWidth;
-            this.width = this.gameWidth;
-            this.height = this.gameHeight;
-            this.opacity = 0;
-            this.x = 0;
-            this.y = 0;
-        }
-        draw(context){
-            context.fillStyle = "black";
-            context.fillStroke(this.x, this.y, this.width, this.height);
         }
     }
     // class Eye{
@@ -179,13 +163,37 @@ window.addEventListener('load', function(){
         if (score % 500 == 0) steps += 1;
     }
 
+    class Dark{
+        constructor(gameHeight, gameWidth){
+            this.gameHeight = gameHeight;
+            this.gameWidth = gameWidth;
+            this.width = this.gameWidth;
+            this.height = this.gameHeight;
+            this.opacity = 0;
+            this.x = -this.gameWidth;
+            this.y = 0;
+            this.speed = 1;
+        }
+        draw(context){
+            context.fillStyle = "black";
+            // context.fillStroke(this.x, this.y, this.width, this.height);
+            context.fillRect(this.x, this.y, this.width, this.height);
+        }
+        update(input){
+            if(input.keys.indexOf("ArrowUp") > -1) this.speed = -10;
+            else this.speed = timer/5000 + 2;
+            this.x += this.speed;
+            if(this.x < 0 - this.width) this.x = 0 - this.width;
+        }
+    }
+
     function displayText(context, gameWidth, gameHeight){
         context.font = "20px Arial";
         context.fillStyle = "white";
         context.fillText("Timer: " + timer, 20, 50);
         context.font = "20px Arial";
         context.fillStyle = "white";
-        context.fillText("Score: " + Math.round(score * 0.4), 20, 100);
+        context.fillText("Score: " + score, 20, 100);
         if(gameOver){
             context.font = "40px Arial";
             context.fillStyle = "white";
@@ -212,6 +220,7 @@ window.addEventListener('load', function(){
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
+    const dark = new Dark(canvas.height, canvas.width);
     // const eye = new Eye(canvas.width, canvas.height);
 
     // let lastTime = 0;
@@ -230,6 +239,8 @@ window.addEventListener('load', function(){
         background.update(input);
         player.draw(ctx);
         player.update(input, deltaTime);
+        dark.draw(ctx);
+        dark.update(input);
         // handleEnemies(deltaTime);
         // eye.draw(ctx);
         // eye.update(input);
