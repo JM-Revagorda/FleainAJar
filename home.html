@@ -14,59 +14,54 @@
                 grid-template-rows: auto auto "footer"; 
                 overflow-x: hidden;
             }
-            /* .header, .content, .footer{
-                z-index: 2;
-            } */
-            /* .slideContainer{
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 3;
-            }
-                .slideContainer .slide{
-                    display: none;
-                } */
-            .slideContainer{
-                width: 100vw;
+
+            
+            .box {
+                display: flex;
+                align-items: flex-start;
+                background: #fff;
                 height: 100vh;
                 overflow: hidden;
+                position: relative;
             }
-                .slide img{
-                    width: 100vh;
-                    animation: fade 8s infinite;
+            .box .single-box img {
+                /* position: absolute; */
+                /* min-width: 100%;
+                min-height: 100%; */
+                /* height: auto; */
+                background: #000;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                opacity: 0;
+                /* transform: scale(1.5) rotate(15deg); */
+                -webkit-animation: animate 24s infinite;
+                animation: animate 24s infinite;
+            }
+            .box .single-box:nth-child(2) img {
+                -webkit-animation-delay: 4s;
+                animation-delay: 4s;
+            }
+            .box .single-box:nth-child(1) img {
+                -webkit-animation-delay: 8s;
+                animation-delay: 8s;
+            }
+            /* .box .single-box:nth-child(1) img {
+                -webkit-animation-delay: 24s;
+                animation-delay: 24s;
+            } */
+            @keyframes animate {
+                25% {
+                    opacity: 1;
+                    /* transform: scale(1) rotate(0); */
+                }
+                40% {
                     opacity: 0;
                 }
-                    /* .slideContainer .slide:nth-child(1) img{
-                        animation: none;
-                        z-index: 1;
-                    } */
-                    .slideContainer .slide:nth-child(2) img{
-                        animation-delay: 8s;
-                        z-index: 2;
-                    }
-                    .slideContainer .slide:nth-child(3) img{
-                        animation-delay: 4s;
-                        z-index: 2;
-                    }
-                @keyframes fade{
-                    25%{opacity: 1;}
-                    40%{opacity: 0;}
-                }
-            .header {
-                grid-column: 1 / span 2;
-                display: grid;
-                grid-template: 'dat2';
-                /* background-image: url('images/headertemp.png');
-                background-attachment: fixed;
-                background-position: 40%;
-                background-repeat: no-repeat;
-                background-size: 140% 200%; */
-                padding: 15% 0;
             }
                 .overlay{
                     width: 100%;
                     height: 100%;
-                    position: fixed;
+                    position: absolute;
                     z-index: 3;
                     background-color: rgb(0,0,0, 0.4);
                 }
@@ -90,6 +85,20 @@
                         cursor:pointer;
                         text-shadow: 0 0 5px gray;
                     } */
+            .header {
+                position: absolute;
+                margin-left: 25%; 
+                /* grid-column: 1 / span 2;
+                display: grid;
+                grid-template: 'dat2'; */
+                /* background-image: url('images/headertemp.png');
+                background-attachment: fixed;
+                background-position: 40%;
+                background-repeat: no-repeat;
+                background-size: 140% 200%; */
+                padding: 15% 0;
+                z-index: 4;
+            }
                 #dat1, #dat2, #dat3{
                     margin: 0px;
                     z-index: 4;
@@ -116,8 +125,15 @@
                                 width: 20px;
                                 height: 20px;
                             }
-                    .headerimg{position: fixed; top: -50%; left: -20%}
-                    .paranoia{position: fixed; top: -10%; left: 0%}
+                    /* .headerimg{} */
+                    .paranoia{
+                        width: 120%;
+                        position: fixed; top: -10%; left: -10%; z-index: 2;
+                    }
+                    .blank{
+                        width: 120%;
+                        position: fixed; top: -30%; left: -15%;z-index: 2;
+                    }
                 /* #dat1{padding: 2% 0;} */
                 /* #dat2{padding: 0 0 % 0;} */
                 /* #dat3{padding: 0 0;} */
@@ -228,17 +244,25 @@
         <hr/>
     </div>
     <span class="click ar2">&#10095;</span>
-    <div class="slideContainer">
-        <div class="slide fade headerimg">
-            <img src="images/headertemp.png" width="120%" style="animation: none; z-index: 1; opacity: 1;">
+    <!-- <div class="slideContainer">
+        <div class="presentation">
+            <div class="slide ">
+                <img src="images/headertemp.png" width="120%">
+            </div>
+            <div class="slide fade ">
+                <img src="images/print 1.png" width="100%">
+            </div>
+            <div class="slide fade ">
+                <img src="images/print 2.png" width="100%" style="position: fixed; top: -30%; left: 0%; background-image: url('images/print\ 2\ bg.png');">
+            </div>
         </div>
-        <div class="slide fade paranoia">
-            <img src="images/print 1.png" width="100%">
-        </div>
-        <div class="slide fade blank">
-            <img src="images/print 2.png" width="100%" style="position: fixed; top: -30%; left: 0%; background-image: url('images/print\ 2\ bg.png');">
-        </div>
-    </div>
+    </div> -->
+    <div class="wrapper box">
+		<!-- <div class="single-box headerimg"><img alt="" src="images/headertemp.png" width="90%"></div> -->
+		<div class="single-box paranoia"><img alt="" src="images/print 1.png" width="100%"></div>
+		<div class="single-box blank"><img alt="" src="images/print 2.png" width="100%"></div>
+	</div>
+    <img src="images/headertemp.png" style="width: 120%; position: fixed; top: -50%; left: -10%; z-index: 1;">
     <div class="header">
             <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
                 <center>
