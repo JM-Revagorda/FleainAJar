@@ -12,11 +12,12 @@
                 display: grid;
                 grid-template-columns: 15% auto;
                 grid-template-rows: auto auto "footer"; 
+                overflow-x: hidden;
             }
             /* .header, .content, .footer{
                 z-index: 2;
             } */
-            .slideContainer{
+            /* .slideContainer{
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -24,6 +25,20 @@
             }
                 .slideContainer .slide{
                     display: none;
+                } */
+            .slideContainer{
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+            }
+                .slide{
+                    width: 100vh;
+                    animation: fade 2s ease-in-out;
+                    opacity: 0;
+                }
+                @keyframes fade{
+                    25%{opacity: 1;}
+                    40%{opacity: 1;}
                 }
             .header {
                 grid-column: 1 / span 2;
@@ -177,7 +192,7 @@
             }
 
         /* Animations */
-        .fade {
+        /* .fade {
             animation-name: fade;
             animation-duration: 1.5s;
         }
@@ -185,7 +200,7 @@
         @keyframes fade {
             from {opacity: .4}
             to {opacity: 1}
-        }
+        } */
         </style>
     </head>
 <body>
@@ -202,6 +217,10 @@
     </div>
     <span class="click ar2">&#10095;</span>
     <div class="slideContainer">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
         <div class="slide fade headerimg">
             <img src="images/headertemp.png" width="120%">
         </div>
@@ -327,20 +346,20 @@
         }
 
         // Slideshow Time!
-        let slideIndex = 0;
-        showSlides();
+        // let slideIndex = 0;
+        // showSlides();
 
-        function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("slide");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}
-        slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
+        // function showSlides() {
+        // let i;
+        // let slides = document.getElementsByClassName("slide");
+        // for (i = 0; i < slides.length; i++) {
+        //     slides[i].style.display = "none";
+        // }
+        // slideIndex++;
+        // if (slideIndex > slides.length) {slideIndex = 1}
+        // slides[slideIndex-1].style.display = "block";
+        // setTimeout(showSlides, 2000); // Change image every 2 seconds
+        // }
         // let slideIndex = 1;
         // showSlides(slideIndex);
 
