@@ -31,14 +31,26 @@
                 height: 100vh;
                 overflow: hidden;
             }
-                .slide{
+                .slide img{
                     width: 100vh;
-                    animation: fade 2s ease-in-out;
+                    animation: fade 8s infinite;
                     opacity: 0;
                 }
+                    /* .slideContainer .slide:nth-child(1) img{
+                        animation: none;
+                        z-index: 1;
+                    } */
+                    .slideContainer .slide:nth-child(2) img{
+                        animation-delay: 8s;
+                        z-index: 2;
+                    }
+                    .slideContainer .slide:nth-child(3) img{
+                        animation-delay: 4s;
+                        z-index: 2;
+                    }
                 @keyframes fade{
                     25%{opacity: 1;}
-                    40%{opacity: 1;}
+                    40%{opacity: 0;}
                 }
             .header {
                 grid-column: 1 / span 2;
@@ -217,12 +229,8 @@
     </div>
     <span class="click ar2">&#10095;</span>
     <div class="slideContainer">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
         <div class="slide fade headerimg">
-            <img src="images/headertemp.png" width="120%">
+            <img src="images/headertemp.png" width="120%" style="animation: none; z-index: 1; opacity: 1;">
         </div>
         <div class="slide fade paranoia">
             <img src="images/print 1.png" width="100%">
