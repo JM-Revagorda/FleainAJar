@@ -3,30 +3,35 @@ window.addEventListener('load', function(){
     const ctx = canvas.getContext('2d');
     canvas.width = 2000;
     canvas.height = 720;
+    let pause_menu = this.document.querySelector("dialog");
     let timer = 5000;
     let entities = [];
-    let gameOver = false;
+    let gameOver = false, pause = false;
     let score = 0;
 
+    //Creates inputs
     class InputHandler{
         constructor(){
             this.keys = [];
             window.addEventListener('keydown', e => {
                 if ((e.key === 'ArrowUp' ||
-                     e.key == " ")
+                     e.key == " "||
+                     e.key == "q")
                      && this.keys.indexOf(e.key) === -1){
                     this.keys.push(e.key);
                 }
             });
             window.addEventListener('keyup', e => {
                 if (e.key === 'ArrowUp' ||
-                    e.key == " "){
+                    e.key == " "||
+                    e.key == "q"){
                     this.keys.splice(this.keys.indexOf(e.key), 1);
                 }
             });
         }        
     }
 
+    //Player instantiation
     class Player{
         constructor(gameWidth, gameHeight){
             this.gameWidth = gameWidth;
@@ -54,13 +59,9 @@ window.addEventListener('load', function(){
         }
         update(input, deltaTime){
             if(input.keys.indexOf("ArrowUp") > -1){
-                // this.speed = 0;
-                // this.color = 'red';
                 score += 0;
             } else {
-                // this.speed = 5;
-                // this.color = 'blue';
-                score += Math.round(3 * 0.6);
+                score += Math.round(2 * 0.6);
             }
 
             //Animation
@@ -74,12 +75,10 @@ window.addEventListener('load', function(){
             } else {
                 this.frameTimer += deltaTime;
             }
-
-            // context.fillStyle = this.color;
-            // context.fillRect(this.x, this.y, this.width, this.height);
         }
     }
 
+    // Background Instantiation
     class Background{
         constructor(gameWidth, gameHeight){
             this.gameWidth = gameWidth;
@@ -103,54 +102,10 @@ window.addEventListener('load', function(){
             else this.speed = 7;
         }
     }
-    // class Eye{
-    //     constructor(gameWidth, gameHeight){
-    //         this.gameWidth = gameWidth;
-    //         this.gameHeight = gameHeight;
-    //         this.width = 100;
-    //         this.height = 100;
-    //         this.x = 0;
-    //         this.y = Math.round(Math.random(5) * 650);
-    //         this.speed = 0;
-    //         console.log(this.y);
-    //         this.maxSpeed = -5;
-    //         // this.markedForDeleting = false;
-    //     }
-    //     draw(context){
-    //         context.fillStyle = 'black';
-    //         context.fillRect(this.x, this.y, this.width, this.height);
-    //     }
-    //     update(input){
-    //         if (input.keys.indexOf("ArrowUp") > -1){
-    //             if (this.speed > this.maxSpeed){
-    //                 this.speed = this.maxSpeed;
-    //             } else{
-    //                 this.speed -= 3;
-    //             }
-    //         } 
-    //         else{ 
-    //             this.speed = Math.random() * 0.2 + 10;
-    //         }
-    //         this.x += this.speed;
-
-    //         if(this.x < -20){
-    //             this.x = -20;
-    //         }
-    //         // if (this.x >= this.gameWidth / 2 * 0.5){ 
-    //         //     this.markedForDeleting = true;
-    //         // }
-    //     }
-    // }
-
+    
+    // Timer creator
     let steps = 0;
     function Timer(input){
-        // if(entity.color != "red"){
-        //     timer -= steps + 1;
-        // }
-        // else{
-        //     timer += 3;
-        // }
-
         if(input.keys.indexOf("ArrowUp") > -1){
             timer += 3;
         } else {
@@ -163,6 +118,24 @@ window.addEventListener('load', function(){
         if (score % 500 == 0) steps += 1;
     }
 
+    //Pause menu(open and close)
+    function pauser(input){
+        let closer = document.getElementsByClassName("options")[0];
+        let leave = document.getElementsByClassName("options")[1];
+        if (input.keys.indexOf('q') > -1 && !pause){
+            pause = true;
+            pause_menu.showModal();
+        }
+        closer.onclick = function(){
+            pause_menu.close();
+            pause = false;
+        }
+        leave.onclick = function(){
+            window.close();
+        }
+    }
+
+    // Darkness(for aesthtics only!)
     class Dark{
         constructor(gameHeight, gameWidth){
             this.gameHeight = gameHeight;
@@ -176,15 +149,20 @@ window.addEventListener('load', function(){
         }
         draw(context){
             context.fillStyle = "black";
-            // context.fillStroke(this.x, this.y, this.width, this.height);
             context.fillRect(this.x, this.y, this.width, this.height);
         }
         update(input){
             if(input.keys.indexOf("ArrowUp") > -1) this.speed = -10;
-            else this.speed = timer/5000 + 2;
+            else this.speed = timer/5000 + 1;
             this.x += this.speed;
             if(this.x < 0 - this.width) this.x = 0 - this.width;
+            if(this.x > (this.gameWidth / 2) - this.width) this.x = (this.gameWidth / 2) - this.width;
         }
+    }
+
+    function closer(){
+        pause = false;
+        pause_menu.close();
     }
 
     function displayText(context, gameWidth, gameHeight){
@@ -201,21 +179,6 @@ window.addEventListener('load', function(){
             console.log(score);
         }
     }
-    // function handleEnemies(deltaTime){
-    //     if (entityTimer > entityInterval + randomEntityInterval){
-    //         entities.push(new Eye(canvas.width, canvas.height));
-    //         randomEntityInterval = Math.random() * 1000 + 500;
-    //         entities = 0;
-    //     } else{
-    //         entities += deltaTime;
-    //     }
-    //     entities.forEach(eye => {
-    //         eye.draw(ctx);
-    //         eye.update(deltaTime);
-    //     });
-    //         //creates a new array for all elements that passes the test, thus keeping them from being deleted. Functions similarly to GM's instance_destroy().
-    //     entities = entities.filter(eye => !eye.markedForDeleting);
-    // }
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
@@ -233,18 +196,18 @@ window.addEventListener('load', function(){
     function animate(timeStamp){
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
-        Timer(input);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        background.draw(ctx);
-        background.update(input);
-        player.draw(ctx);
-        player.update(input, deltaTime);
-        dark.draw(ctx);
-        dark.update(input);
-        // handleEnemies(deltaTime);
-        // eye.draw(ctx);
-        // eye.update(input);
-        displayText(ctx, canvas.width, canvas.height);
+        pauser(input);
+        if(!pause){
+            Timer(input);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            background.draw(ctx);
+            background.update(input);
+            dark.draw(ctx);
+            dark.update(input);
+            player.draw(ctx);
+            player.update(input, deltaTime);
+            displayText(ctx, canvas.width, canvas.height);
+        }
         if(!gameOver){requestAnimationFrame(animate);}
     }
     animate(0);
