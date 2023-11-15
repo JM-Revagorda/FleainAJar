@@ -5,6 +5,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            *{
+                font-family: Arial, Helvetica, sans-serif;
+            }
             #mainarea{
                 margin: auto;
                 border: 1px solid black;
@@ -24,14 +27,13 @@
                 z-index: 1;
             }
             dialog{
+                background-image: url(../images/paper\ texture.jpg);
 				width: 30vw;
 				height:	60vh;
-				border: 1px solid black;
 				position: fixed;
 				top: 5%;
 			}
 			table{
-				border: 1px solid slategray;
 				padding: 10%;
 				text-align: center;
 				width: 100%;
@@ -42,7 +44,6 @@
                 .options{
                     padding: 5% 15%;
                     font-size: 20px;
-                    border: 1px solid black;
                     border-radius: 3px;
                     transition: 0.3s;
                 }
@@ -61,7 +62,8 @@
     </head>
 <body>
     <canvas id="mainarea"></canvas>
-    <div id="darkness"></div>
+    <!-- <div id="darkness"></div> -->
+    <img id="darkness" src="../images/darkness.png">
     <img id="objPlayer" src="../images/playersmallercropped.png" alt="ObjPlayer">
     <img id="objBackground" src="../images/gamebg.jpg" alt="Background">
     <dialog>

@@ -101,7 +101,7 @@
                 background-position: 40%;
                 background-repeat: no-repeat;
                 background-size: 140% 200%; */
-                padding: 15% 0;
+                padding: 12% 0;
                 z-index: 4;
             }
                 #dat1, #dat2, #dat3{
@@ -178,8 +178,7 @@
                         background-color: #6a3d36;
                 }
             html:not([data-scroll='0']) #dat3{
-				background-color: rgb(8,181,198,25);
-                color: black
+				background-color: #303240;
 			}
                 /* .menu{
                     margin: 0 -30%;
@@ -197,7 +196,36 @@
                     li:hover{
                         background-color: gray;
                     } */
-
+            .down{
+                display: block;
+                font-size: 70px;
+                position: absolute;
+                top: 80%;
+                right: 7%;
+                color: white;
+                z-index: 6;
+                transform: rotate(-90deg);
+                transition: 0.3s;
+            }
+                .down:hover{
+                    cursor: pointer;
+                    text-shadow: -5px 5px maroon;
+                }
+                .up{
+                display: block;
+                font-size: 70px;
+                position: absolute;
+                top: 105%;
+                right: 6%;
+                color: maroon;
+                z-index: 6;
+                transform: rotate(90deg);
+                transition: 0.3s;
+            }
+                .up:hover{
+                    cursor: pointer;
+                    text-shadow: -5px 5px gray;
+                }
             .content{
                 grid-area: content;
                 grid-column: 2;
@@ -205,7 +233,7 @@
                 display: grid;
                 grid-template: '.image' '.text';
                 background-image: url('images/paper\ texture.jpg');
-                z-index: 4;
+                z-index: 4;;
             }
                 .image{
                     object-fit: contain;
@@ -243,12 +271,11 @@
         <hr/>
         <span style="display: block;" onclick="location.href='about.html'" onmouseover="this.style.cursor = 'pointer'"><p style="margin: 0 -0.5%;">ABOUT</p></span>
         <hr/>
-        <span style="display: block;" onclick="location.href='index.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
+        <span style="display: block;" onclick="location.href='map.html'" onmouseover="this.style.cursor = 'pointer'"><p>MAP</p></span>
         <hr/>
         <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
         <hr/>
     </div>
-    <span class="click ar2">&#10095;</span>
     <!-- <div class="slideContainer">
         <div class="presentation">
             <div class="slide ">
@@ -272,7 +299,7 @@
     <div class="header">
             <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
                 <center>
-                <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a; z-index: 6;">Flea in a jar</h1>
+                <h1 style="font-size: 140px; text-shadow: 5px 5px 5px black; color: #a8030a; z-index: 6;" id="intro">Flea in a jar</h1>
                 <br/>
                 <br/>
                 <br/>
@@ -291,12 +318,14 @@
                     <span class="dots"></span>
             </div> -->
     </div>
+    <span class="down" onclick="location.href='#Statement'">&#8250;</span>
+    <span class="up" onclick="location.href='#'">&#8250;</span>
     <div class="content">
         <div class="image">
             <img src="images/annonymous (2).png" width="80%" style="float: right;">
         </div>
         <div class="text">
-            <h1>Artist's Statement</h1>
+            <h1 id="Statement">Artist's Statement</h1>
             <hr/>
             <p>
                 A sense of hopelessness, pressure, and
@@ -363,25 +392,25 @@
 		storeScroll();
 
         //SlideshowControls(for header disappearing)
-        const dataheader = document.getElementById("dat2");
-        const arrowRight = document.getElementsByClassName("ar2")[0];
+        // const dataheader = document.getElementById("dat2");
+        // const arrowRight = document.getElementsByClassName("ar2")[0];
 
-        arrowRight.style.transition = "0.3";
+        // arrowRight.style.transition = "0.3";
 
-        arrowRight.onmouseover = function(){
-            dataheader.style.opacity = "0.0";
-            arrowRight.style.cursor = "pointer";
-        }
-        arrowRight.onmouseout = function(){
-            animationlooptest(dataheader);
-            dataheader.style.opacity = "1.0";
-        }
+        // arrowRight.onmouseover = function(){
+        //     dataheader.style.opacity = "0.0";
+        //     arrowRight.style.cursor = "pointer";
+        // }
+        // arrowRight.onmouseout = function(){
+        //     animationlooptest(dataheader);
+        //     dataheader.style.opacity = "1.0";
+        // }
 
-        function animationlooptest(dataid){
-            for(var i = 0; i < 1; i += 0.1){
-                dataid.style.opacity = i + "";
-            }
-        }
+        // function animationlooptest(dataid){
+        //     for(var i = 0; i < 1; i += 0.1){
+        //         dataid.style.opacity = i + "";
+        //     }
+        // }
 
         // Slideshow Time!
         // let slideIndex = 0;

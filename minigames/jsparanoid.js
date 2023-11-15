@@ -146,10 +146,12 @@ window.addEventListener('load', function(){
             this.x = -this.gameWidth;
             this.y = 0;
             this.speed = 1;
+            this.image = document.getElementById("darkness");
         }
         draw(context){
-            context.fillStyle = "black";
-            context.fillRect(this.x, this.y, this.width, this.height);
+            // context.fillStyle = "black";
+            // context.fillRect(this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
         update(input){
             if(input.keys.indexOf("ArrowUp") > -1) this.speed = -10;
@@ -166,12 +168,12 @@ window.addEventListener('load', function(){
     }
 
     function displayText(context, gameWidth, gameHeight){
-        context.font = "20px Arial";
+        context.font = "30px Arial";
         context.fillStyle = "white";
-        context.fillText("Timer: " + timer, 20, 50);
-        context.font = "20px Arial";
+        context.fillText("Timer: " + timer, gameWidth/2, 50);
+        context.font = "30px Arial";
         context.fillStyle = "white";
-        context.fillText("Score: " + score, 20, 100);
+        context.fillText("Distance: " + score, 20, 50);
         if(gameOver){
             context.font = "40px Arial";
             context.fillStyle = "white";
@@ -202,13 +204,13 @@ window.addEventListener('load', function(){
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background.draw(ctx);
             background.update(input);
-            dark.draw(ctx);
-            dark.update(input);
             player.draw(ctx);
             player.update(input, deltaTime);
+            dark.draw(ctx);
+            dark.update(input);
             displayText(ctx, canvas.width, canvas.height);
         }
-        if(!gameOver){requestAnimationFrame(animate);}
+        if(!gameOver)requestAnimationFrame(animate);
     }
     animate(0);
 });
