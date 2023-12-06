@@ -5,7 +5,6 @@ window.addEventListener('load', function(){
     canvas.height = 720;
     let pause_menu = this.document.querySelector("dialog");
     let timer = 5000;
-    let entities = [];
     let gameOver = false, pause = false;
     let score = 0;
 
@@ -57,7 +56,9 @@ window.addEventListener('load', function(){
             // context.fillRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, 0 * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
-        update(input, deltaTime){
+        update(input, deltaTime, darkness){
+            if ((darkness.width + darkness.x)/7 > this.width) gameOver = true;
+
             if(input.keys.indexOf("ArrowUp") > -1){
                 score += 0;
             } else {
@@ -135,7 +136,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    // Darkness(for aesthtics only!)
     class Dark{
         constructor(gameHeight, gameWidth){
             this.gameHeight = gameHeight;
@@ -155,10 +155,10 @@ window.addEventListener('load', function(){
         }
         update(input){
             if(input.keys.indexOf("ArrowUp") > -1) this.speed = -10;
-            else this.speed = timer/5000 + 1;
+            else this.speed = steps + 1;
             this.x += this.speed;
             if(this.x < 0 - this.width) this.x = 0 - this.width;
-            if(this.x > (this.gameWidth / 2) - this.width) this.x = (this.gameWidth / 2) - this.width;
+            // if(this.x > (this.gameWidth / 2) - this.width) this.x = (this.gameWidth / 2) - this.width;
         }
     }
 
@@ -205,7 +205,7 @@ window.addEventListener('load', function(){
             background.draw(ctx);
             background.update(input);
             player.draw(ctx);
-            player.update(input, deltaTime);
+            player.update(input, deltaTime, dark);
             dark.draw(ctx);
             dark.update(input);
             displayText(ctx, canvas.width, canvas.height);

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <title>Flea In A Jar</title>
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <style>
             *{
                 font-family: Arial, helvetica;
@@ -11,7 +13,7 @@
             body{
                 display: grid;
                 grid-template-columns: 15% auto;
-                grid-template-rows: auto auto "footer"; 
+                grid-template-rows: auto auto "myChart" "footer"; 
                 overflow-x: hidden;
             }
 
@@ -244,9 +246,18 @@
                     border-left: 2px solid gray;
                     padding: 5% 5%;
                 }
+            #chartarea{
+                z-index: 3;
+                grid-row: 3;
+                grid-column: 2;
+                width: 100%;
+                height: 950px;
+                border: 1px solid black;
+                background-color: aqua;
+            }
              .footer {
                 background-color: white;
-                grid-row: 3;
+                grid-row: 4;
                 grid-column: 2;
                 padding: 2% 0;
                 z-index: 5;
@@ -354,6 +365,10 @@
                 in a jar.</strong><br/></p>
         </div>
     </div>
+    <div id="chartarea">
+        <h1>You are feeling good today</h1>
+        <div id="myChart" style="height: 750px;""></div>
+    </div>
     <div class="footer">
         <p style="text-align: center;">
             Jo-Ri Designs. Made with love. © 2023 <br/>
@@ -363,13 +378,6 @@
 
     <!-- Miscelaneous -->
     <div class="overlay"></div>
-
-
-
-
-
-
-
     <script>
         const debounce = (fn) => {
 			let frame;
@@ -389,76 +397,30 @@
 		}
 		document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 		storeScroll();
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
 
-        //SlideshowControls(for header disappearing)
-        // const dataheader = document.getElementById("dat2");
-        // const arrowRight = document.getElementsByClassName("ar2")[0];
+        // Set Data
+        const data = google.visualization.arrayToDataTable([
+        ['Contry', 'Mhl'],
+        ['Italy', 55],
+        ['France', 49],
+        ['Spain', 44],
+        ['USA', 24],
+        ['Argentina', 15]
+        ]);
 
-        // arrowRight.style.transition = "0.3";
+        // Set Options
+        const options = {
+        title: 'World Wide Wine Production'
+        };
 
-        // arrowRight.onmouseover = function(){
-        //     dataheader.style.opacity = "0.0";
-        //     arrowRight.style.cursor = "pointer";
-        // }
-        // arrowRight.onmouseout = function(){
-        //     animationlooptest(dataheader);
-        //     dataheader.style.opacity = "1.0";
-        // }
+        // Draw
+        const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+        chart.draw(data, options);
 
-        // function animationlooptest(dataid){
-        //     for(var i = 0; i < 1; i += 0.1){
-        //         dataid.style.opacity = i + "";
-        //     }
-        // }
-
-        // Slideshow Time!
-        // let slideIndex = 0;
-        // showSlides();
-
-        // function showSlides() {
-        // let i;
-        // let slides = document.getElementsByClassName("slide");
-        // for (i = 0; i < slides.length; i++) {
-        //     slides[i].style.display = "none";
-        // }
-        // slideIndex++;
-        // if (slideIndex > slides.length) {slideIndex = 1}
-        // slides[slideIndex-1].style.display = "block";
-        // setTimeout(showSlides, 2000); // Change image every 2 seconds
-        // }
-        // let slideIndex = 1;
-        // showSlides(slideIndex);
-
-        // // Next/previous controls
-        // function plusSlides(n) {
-        // showSlides(slideIndex += n);
-        // }
-
-        // // Thumbnail image controls
-        // function currentSlide(n) {
-        // showSlides(slideIndex = n);
-        // }
-
-        // function showSlides(n) {
-        // let i;
-        // let slides = document.getElementsByClassName("slide");
-        // let dots = document.getElementsByClassName("dots");
-        // if (n > slides.length) {slideIndex = 1}
-        // if (n < 1) {slideIndex = slides.length}
-        // for (i = 0; i < slides.length; i++) {
-        //     slides[i].style.display = "none";
-        // }
-        // for (i = 0; i < dots.length; i++) {
-        //     dots[i].className = dots[i].className.replace(" active", "");
-        // }
-        // slides[slideIndex-1].style.display = "block";
-        // dots[slideIndex-1].className += " active";
-
-        // // slideIndex++;
-        // // if (slideIndex > slides.length) {slideIndex = 1}
-        // // slides[slideIndex-1].style.display = "block";
-        // setTimeout(showSlides, 2000); // Change image every 2 seconds
-        // }
+        }
     </script>
 </body>
 </html>
