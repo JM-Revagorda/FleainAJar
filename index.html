@@ -253,7 +253,7 @@
                 width: 100%;
                 height: 950px;
                 border: 1px solid black;
-                background-color: aqua;
+                background: url("images/sticker\ bg2.png") no-repeat;
             }
              .footer {
                 background-color: white;
@@ -367,7 +367,7 @@
     </div>
     <div id="chartarea">
         <h1>You are feeling good today</h1>
-        <div id="myChart" style="height: 750px;""></div>
+        <div id="myChart" style="width: 100%; height: 750px;"></div>
     </div>
     <div class="footer">
         <p style="text-align: center;">
@@ -397,29 +397,35 @@
 		}
 		document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 		storeScroll();
+
+        //For the chart area
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
 
         // Set Data
         const data = google.visualization.arrayToDataTable([
-        ['Contry', 'Mhl'],
-        ['Italy', 55],
-        ['France', 49],
-        ['Spain', 44],
-        ['USA', 24],
-        ['Argentina', 15]
+        ['Contry', 'Mhl', {role : 'style'}, {role: 'style'}],
+        ['Italy', 55, 'color: #d93909', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
+        ['France', 49, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
+        ['Spain', 44, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
+        ['USA', 24, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
+        ['Argentina', 15, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);']
         ]);
 
         // Set Options
         const options = {
-        title: 'World Wide Wine Production'
+            title: 'World Wide Wine Production',
+            backgroundColor: 'none',
         };
 
         // Draw
         const chart = new google.visualization.BarChart(document.getElementById('myChart'));
         chart.draw(data, options);
 
+        //Making background image for #chartarea
+        var boundingBox = chart.getChartLayoutInterface().getChartAreaBoundingBox();
+        $('#chartarea').css('background-position', boundingBox.left + "px " + boundingBox.top + "px").css('background-size', boundingBox.width + "px " + boundingBox.height + "px");
         }
     </script>
 </body>
