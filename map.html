@@ -4,6 +4,7 @@
         <title>Flea In A Jar</title>
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
         <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
+        <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script>
         <style>
             *{
                 font-family: Arial, Helvetica, sans-serif;
@@ -85,10 +86,7 @@
         to move around the website
     </p>
     <!-- Image area -->
-    <picture>
-        <source media="(min-width: 1366px)"  usemap="#2xsmallscreens" srcset="images/map2nddraftsmall2.jpg">
-        <img src="images/map2nddraft.jpg" usemap="#original" id="mapimg">
-    </picture>
+    <img src="images/map2nddraftsmall3.jpg" usemap="#2xsmallscreens" id="mapimg">
 
     <!-- Maps -->
     <map name="2xsmallscreens">
@@ -157,6 +155,8 @@
         function closeDialog(){
             dialog.close();
         }
+
+        imageResize();
     </script>
 </body>
 </html>
