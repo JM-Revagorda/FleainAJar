@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Flea In A Jar</title>
+        <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <style>
             body{
                 background-image: url('images/paper\ texture.jpg');
@@ -61,11 +62,17 @@
     </div>
     <div class="emailarea">
         <h1>If you got any comments or inquiries, dont hesitate to message us!</h1>
-        <form>
-            <input type="text" name="userName" value="Name:">
-            <input type="text" name="userEmail" value="Email:">
-            <textarea name="userMessage" rows="5" cols="30" style="resize: none;">Place Message here...</textarea>
-            <input type="submit" value="Submit" style="width: 20%;" onclick="location.href='mailto:johncrevagorda@su.edu.ph'">
+        <form action="#" method="POST">
+                <label for="name">Name:<input type="text" name="userName" id="name"></label>
+                <label for="email">Email<input type="text" name="userEmail" id="email"></label>
+                <textarea name="userMessage" rows="5" cols="30" style="resize: none;">Place Message here...</textarea>
+                <fieldset>
+                <legend>Type of Message</legend>
+                    <label>Complain<input type="radio" name="priority" value="complain" checked></label>
+                    <label>Suggestion<input type="radio" name="priority" value="suggestion"></label>
+                    <label>Question<input type="radio" name="priority" value="question"></label>
+                </fieldset>
+                <input type="submit" value="submit" name="submit" style="width: 20%;">
         </form>
     </div>
     <div class="iconarea">
@@ -78,5 +85,19 @@
         <img width="18%" src="images/fblogo.png" onclick="location.href='https://www.facebook.com/people/Pixer-Nineonethreefour/pfbid0Y1BVRkp4P6FSLqwNpXJfxR42HQ4v2RnvofF2LTPM4Bc7kc1JQPU3GsoUadL6Bhkhl/'">
     </div>
     </center>
+    <?php
+        $name = $_POST["userName"];
+        $email = $_POST["userEmail"];
+        $msg = $_POST["userMessage"];
+        $adminmail = "joridesigns24@gmail.com";
+        $priority = $_POST["priority"];
+
+        if (isset($_POST["submit"])){
+            if($priority != null){
+                $msg = wordwrap($msg,70);
+                mail($adminmail, $userName."'s ". $priority, $msg);
+            }
+        }
+    ?>
 </body>
 </html>

@@ -3,6 +3,7 @@
     <head>
         <title>Flea In A Jar</title>
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <style>
             *{
                 font-family: Arial, Helvetica, sans-serif;
@@ -75,20 +76,35 @@
         </style>
     </head>
 <body>
+    <!-- Intro area -->
     <p class="intro">Welcome to the...</p>
     <h1 class="intro" style="top: 2%;">Navigation Map!</h1>
+    <!-- Instructions -->
     <p class="intro guide">
         Click on the circles<br/> 
         to move around the website
     </p>
-    <img src="images/map2nddraftsmall3.jpg" usemap="#2xsmallscreens" id="mapimg">
+    <!-- Image area -->
+    <picture>
+        <source media="(min-width: 1366px)"  usemap="#2xsmallscreens" srcset="images/map2nddraftsmall2.jpg">
+        <img src="images/map2nddraft.jpg" usemap="#original" id="mapimg">
+    </picture>
+
+    <!-- Maps -->
     <map name="2xsmallscreens">
     <area alt="Home Page" title="Home Page" href="index.html" coords="894,217,935,248" shape="rect">
     <area alt="Artworks" title="Artworks" onclick="openDialog()" onmouseover="this.style.cursor='pointer'" coords="490,214,523,255" shape="rect">
     <area alt="About Us" title="About Us" href="about.html" coords="814,434,854,472" shape="rect">
     <area alt="Contacts" title="Contacts" href="contacts.html" coords="367,439,404,472" shape="rect">
     </map>
+    <map name="original">
+        <area alt="Home" title="Home" href="index.html" coords="1497,360,1553,408" shape="rect">
+        <area alt="About us" title="About us" href="about.html" coords="1358,731,1417,775" shape="rect">
+        <area alt="Contacts" title="Contacts" href="contacts.html" coords="615,731,676,785" shape="rect">
+        <area alt="Lets play!" title="Lets play!" onclick="openDialog()" onmouseover="this.style.cursor='pointer'" coords="816,364,872,411" shape="rect">
+      </map>
       
+    <!-- Footer -->
     <div class="footer">
         <p style="text-align: center;">
             Jo-Ri Designs. Made with love. © 2023 <br/>
@@ -96,6 +112,7 @@
         </p>
     </div>
 
+    <!-- Dialog tab when clicking the paintings area -->
     <dialog>
         <span class="close_button" onclick="closeDialog()">&times;</span>
         <table>
@@ -124,6 +141,7 @@
         </table>
     </dialog>
     <script>
+        // Script for opening dialog
         var image = document.getElementById("mapimg");
         const dialog = document.querySelector("dialog");
         document.addEventListener('mousemove',function(e){
@@ -139,23 +157,6 @@
         function closeDialog(){
             dialog.close();
         }
-        // let gameIndex = 0; 
-        // document.addEventListener('mouseover', function(){
-        //     let i;
-        //     let game = document.getElementsByClassName("games");
-        //     for
-        // });
-
-        // var instruct = document.getElementById("instructions");
-        // var game = document.getElementsByClassName("games");
-
-        // function setDataIndex(){
-        //     for(var i = 0; i < game.length; i++){
-        //         game[i].setAttribute('data-index', i);
-        //     }
-        // }
-        // imageMapResize();
     </script>
-    <!-- <script src="javascript stuff/image-map-resizer-master/js/imageMapResizer.min.js"></script> -->
 </body>
 </html>

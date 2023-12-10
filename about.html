@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Flea In A Jar</title>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <style>
             *{
                 margin: 0;
@@ -228,6 +230,7 @@
         </style>
     </head>
 <body>
+    <!-- Nav Menu -->
     <div class="lowersect">
         <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
         <span style="display: block;" onclick="location.href='index.html'" onmouseover="this.style.cursor = 'pointer'"><p style=" color: white">HOME</p></span>
@@ -239,6 +242,7 @@
         <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
         <hr/>
     </div>
+    <!-- Slideshow system -->
     <div id="header" style="background-color: black;">
         <div class="wrapper box">
             <div class="single-box" data-active><img src="images/slide1.jpg" width="120%"></div>
@@ -250,6 +254,7 @@
             <h1>ABOUT US</h1>
         </div>
     </div>
+    <!-- Content Area(Who are we) -->
     <div id="content" style="background-image: url('images/papertexturecutout.png');">
         <h1 style="text-align: center;"> WHO ARE WE? </h1>
         <div class="creatorarea1">
@@ -291,6 +296,7 @@
             </table>
         </div>
     </div>
+    <!-- Content Area(Exhibition) -->
     <div class="aboutexhibition">
     <center>
         <h1 style="font-size:50px; color: white "><br>TRAILER</h1>
@@ -323,6 +329,7 @@
 			   dark hues that symbolizes the range of individuals emotions. A tool, fostering connection among people through a dialogue of moods.
 			   </p>
             </center>
+            <!-- Artworks -->
             <div class="artworkcontent">
                 <img src="images/29.png" class="paint">
                 <img src="images/30.png" class="paint" >
@@ -333,6 +340,7 @@
             </div>
         </div>
     </div>
+    <!-- Footer -->
     <div id="footer">
         <p style="text-align: center;">
             Jo-Ri Designs. Made with love. © 2023 <br/>
@@ -340,7 +348,7 @@
         </p>
     </div>
 
-    <!-- Modals -->
+    <!-- Modal Area(hidden)-->
     <div class="modal">
         <table class="detailedPaint" style="background-image: url('images/print\ 3\ bg.png'); background-size: contain;">>
             <tr>
@@ -441,6 +449,7 @@
     </div>
 
     <script>
+        // Modal Codes
         var modalparent = document.getElementsByClassName("modal");
         var modal_btn_multi = document.getElementsByClassName("paint");
         function setDataIndex() {
@@ -470,22 +479,6 @@
             modal.style.display = "none";
         }
         };
-
-        // slideshow();
-        // function slideshow(){
-        //     const carousel = document.getElementsByClassName("carousel")[0];
-        //     const slides = carousel.querySelector("data-slides");
-        //     const activeSlide = slides.querySelector("[data-active]");
-        //     let newIndex = [...slides.children].indexOf("activeSlide");
-        //     newIndex++;
-
-        //     // if (newIndex < 0) newIndex = slides.children.length - 1;
-        //     if (newIndex >= slides.children.length) newIndex = 0;
-        //     slides.children[newIndex].dataset.active = true;
-        //     delete activeSlide.dataset.active;
-
-        //     setTimeout(slideshow, 2000);
-        // }
     </script>
 </body>
 </html>

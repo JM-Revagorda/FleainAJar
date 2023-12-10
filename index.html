@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
     <head>
         <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <title>Flea In A Jar</title>
+        <!-- Meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <meta charset="UTF-8">
+        <meta name="description" content="Interactive Web Art">
+        <meta name="author" content="JM Revagorda & Rianne Garcia">
+        <meta name="keywords" content="Interactive, Art, Art Blog, flea-in-a-jar">
+
+        <!-- Scripts -->
         <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- Stylesheets -->
         <style>
             *{
                 font-family: Arial, helvetica;
@@ -17,7 +26,6 @@
                 overflow-x: hidden;
             }
 
-            
             .box {
                 display: flex;
                 align-items: flex-start;
@@ -253,7 +261,7 @@
                 width: 100%;
                 height: 950px;
                 border: 1px solid black;
-                background: url("images/sticker\ bg2.png") no-repeat;
+                background: url("images/chartareatest.jpg") no-repeat;
             }
              .footer {
                 background-color: white;
@@ -276,6 +284,7 @@
         </style>
     </head>
 <body>
+    <!-- Side Bar navigation -->
     <div id="dat3">
         <img src="images/flea logo final.png" width="80%" style="padding: 3% 10%;">
         <p class="currentPage">HOME</p>
@@ -287,26 +296,14 @@
         <span style="display: block;" onclick="location.href='contacts.html'" onmouseover="this.style.cursor = 'pointer'"><p id="contact">Contact US!</p></span>
         <hr/>
     </div>
-    <!-- <div class="slideContainer">
-        <div class="presentation">
-            <div class="slide ">
-                <img src="images/headertemp.png" width="120%">
-            </div>
-            <div class="slide fade ">
-                <img src="images/print 1.png" width="100%">
-            </div>
-            <div class="slide fade ">
-                <img src="images/print 2.png" width="100%" style="position: fixed; top: -30%; left: 0%; background-image: url('images/print\ 2\ bg.png');">
-            </div>
-        </div>
-    </div> -->
+    <!-- Slideshow system -->
     <div class="wrapper box">
-		<!-- <div class="single-box headerimg"><img alt="" src="images/headertemp.png" width="90%"></div> -->
 		<div class="single-box paranoia"><img alt="" src="images/slide1.jpg" width="100%"></div>
 		<div class="single-box blank"><img alt="" src="images/slide2.jpg" width="100%"></div>
         <div class="single-box blank"><img alt="" src="images/slide3.jpg" width="100%"></div>
 	</div>
     <img src="images/testing.png" style="width: 120%; position: fixed; top: -50%; left: -10%; z-index: 1;">
+    <!-- Header Area -->
     <div class="header">
             <div id="dat2" style="line-height: 40px; font-family: Arial, helvetica;">
                 <center>
@@ -322,13 +319,9 @@
                 <br/>
                 <br/>
             </div>
-            <!-- <div style="text-align: center;">
-                    <span class="dots"></span>
-                    <span class="dots"></span>
-                    <span class="dots"></span>
-            </div> -->
     </div>
     <span class="down" onclick="location.href='#Statement'">&#8250;</span>
+    <!-- Content Area -->
     <span class="up" onclick="location.href='#'">&#8250;</span>
     <div class="content">
         <div class="image">
@@ -365,10 +358,12 @@
                 in a jar.</strong><br/></p>
         </div>
     </div>
-    <div id="chartarea">
-        <h1>You are feeling good today</h1>
-        <div id="myChart" style="width: 100%; height: 750px;"></div>
+    <!-- Chart Area(this is where you were supposed to see your data after answering the form.html) -->
+        <div id="chartarea">
+        <!-- <h1>You are feeling good today</h1> -->
+        <div id="myChart" style="width: 100%; height: 750px; border: 1px solid gray;"></div>
     </div>
+    <!-- Footer Area -->
     <div class="footer">
         <p style="text-align: center;">
             Jo-Ri Designs. Made with love. © 2023 <br/>
@@ -378,6 +373,8 @@
 
     <!-- Miscelaneous -->
     <div class="overlay"></div>
+
+    <!-- For scroll starting points -->
     <script>
         const debounce = (fn) => {
 			let frame;
@@ -398,35 +395,62 @@
 		document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 		storeScroll();
 
-        //For the chart area
+        // Google chart area codes
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
 
-        // Set Data
-        const data = google.visualization.arrayToDataTable([
-        ['Contry', 'Mhl', {role : 'style'}, {role: 'style'}],
-        ['Italy', 55, 'color: #d93909', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
-        ['France', 49, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
-        ['Spain', 44, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
-        ['USA', 24, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);'],
-        ['Argentina', 15, 'color: blue', 'color:linear-gradient(90deg, rgba(217,57,9,1) 0%, rgba(18,0,8,1) 65%);']
+        function drawChart() {
+        // Setting Data
+        var data = google.visualization.arrayToDataTable([
+            ["Emotion", "Count"],
+            ["Great!", 5],
+            ["Alright", 7],
+            ["Rather not say", 10],
+            ["Tired...", 12],
+            ["SHIT!", 15]
         ]);
 
-        // Set Options
-        const options = {
-            title: 'World Wide Wine Production',
+        // Additional Options
+        var options = {
+            title: "What everyone is feeling today:",
+            width: 1000,
             backgroundColor: 'none',
         };
 
-        // Draw
-        const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+        // Drawing the Chart
+        var chart = new google.visualization.BarChart(document.getElementById('myChart'));
         chart.draw(data, options);
+    }
+    // Will fix this in the future
+    // $.ajax({
+        //     url: "dataindex.php",
+        //     dataType: "JSON",
+        //     success: function (jsonData) {
+        //         var data = new google.visualization.DataTable();
 
-        //Making background image for #chartarea
-        var boundingBox = chart.getChartLayoutInterface().getChartAreaBoundingBox();
-        $('#chartarea').css('background-position', boundingBox.left + "px " + boundingBox.top + "px").css('background-size', boundingBox.width + "px " + boundingBox.height + "px");
-        }
+        //         // Data Table creation
+        //         data.addColumn('string', 'emotion');
+        //         data.addColumn('number', 'count');
+        //         //Data Table Record Creation
+        //         for (var i = 0; i < jsonData.length; i++) {
+        //             data.addRow([jsonData[i].emotions, jsonData[i].count]);
+        //         }
+
+        //         var options = {
+        //             chart : {
+        //                 title: 'Feeling...',
+        //                 backgroundColor: 'white',
+        //                 width: 500,
+        //                 height: 600
+        //             },
+        //             bars: 'horizontal'
+        //         };
+        //         var chart = new google.visualization.Bar(document.getElementById('myChart'));
+        //         chart.draw(data, options);
+        //         var boundingBox = chart.getChartLayoutInterface().getChartAreaBoundingBox();
+        //         $('#chartarea').css('background-position', boundingBox.left + "px " + boundingBox.top + "px").css('background-size', boundingBox.width + "px " + boundingBox.height + "px");
+        //     }
+        // });
     </script>
 </body>
 </html>

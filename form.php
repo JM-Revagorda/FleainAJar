@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Flea in a Jar</title>
+        <link rel="icon" type="image/x-icon" href="images/flea logo final.png"/>
         <style>
             table{
                 margin: auto;
