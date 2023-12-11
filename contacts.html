@@ -62,7 +62,7 @@
     </div>
     <div class="emailarea">
         <h1>If you got any comments or inquiries, dont hesitate to message us!</h1>
-        <form action="#" method="POST">
+        <form action="forcontacts.php" method="POST">
                 <label for="name">Name:<input type="text" name="userName" id="name"></label>
                 <label for="email">Email<input type="text" name="userEmail" id="email"></label>
                 <textarea name="userMessage" rows="5" cols="30" style="resize: none;">Place Message here...</textarea>
@@ -85,19 +85,5 @@
         <img width="18%" src="images/fblogo.png" onclick="location.href='https://www.facebook.com/people/Pixer-Nineonethreefour/pfbid0Y1BVRkp4P6FSLqwNpXJfxR42HQ4v2RnvofF2LTPM4Bc7kc1JQPU3GsoUadL6Bhkhl/'">
     </div>
     </center>
-    <?php
-        $name = $_POST["userName"];
-        $email = $_POST["userEmail"];
-        $msg = $_POST["userMessage"];
-        $adminmail = "joridesigns24@gmail.com";
-        $priority = $_POST["priority"];
-
-        if (isset($_POST["submit"])){
-            if($priority != null){
-                $msg = wordwrap($msg,70);
-                mail($adminmail, $userName."'s ". $priority, $msg);
-            }
-        }
-    ?>
 </body>
 </html>
