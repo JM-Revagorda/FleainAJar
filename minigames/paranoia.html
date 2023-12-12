@@ -33,6 +33,32 @@
 				position: fixed;
 				top: 5%;
 			}
+            #overlay {
+                /* display: none; */
+                position: fixed;
+                z-index: 6;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            #psuedoModal{
+                margin: auto;
+                border: 1px solid white;
+                width: 85%;
+                height: 70%;
+                position: fixed;
+                animation-name: paintings;
+                animation-duration: .5s;
+                animation-fill-mode: forwards;
+                left: 8%;
+                overflow-y: none;
+                text-wrap: wrap;
+                background-color: white;
+            }
 			table{
 				padding: 10%;
 				text-align: center;
@@ -66,7 +92,7 @@
     <img id="darkness" src="../images/darkness.png">
     <img id="objPlayer" src="../images/playersmallercropped.png" alt="ObjPlayer">
     <img id="objBackground" src="../images/gamebg.jpg" alt="Background">
-    <dialog>
+    <dialog id="main">
         <table>
             <tr>
                 <td>
