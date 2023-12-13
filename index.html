@@ -275,7 +275,18 @@
                 padding: 2% 0;
                 z-index: 5;
             }
-
+		#errorScreen{
+			display:none;
+		}
+	@media screen and (max-width: 800px){
+		*{
+			display: none;
+		}
+		#errorScreen{
+			display: block;
+			margin: auto;
+		}
+	}
         </style>
     </head>
 <body>
@@ -368,6 +379,11 @@
 
     <!-- Miscelaneous -->
     <div class="overlay"></div>
+<div id="errorScreen">
+	<h1>ERROR!</h1>
+	<hr width="20%">
+	<p>Please view this website in Desktop! Thanks :)</p>
+</div>
 
     <!-- For scroll starting points -->
     <script>
