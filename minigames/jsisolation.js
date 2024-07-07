@@ -1,8 +1,9 @@
 window.addEventListener('load', function(){
     const canvas = document.getElementById("mainarea");
     const ctx = canvas.getContext("2d");
-    canvas.width = 3200;
-    canvas.height = 1500;
+    canvas.width = 6400;
+    canvas.height = 3000;
+    let nonplayer = [];
 
     class InputHandler{
         constructor(){
@@ -68,7 +69,17 @@ window.addEventListener('load', function(){
 
             this.x += this.speedX;
             this.y += this.speedY;
-        }
+
+        //     //Change opacity of NPC
+        //     npcs.forEach(npcs=> {
+        //         const dx = npcs.x - this.x;
+        //         const dy = npcs.y - this.y;
+        //         const distance = Math.sqrt(dx*dx + dy*dy);
+
+        //         npcs.opacity = (distance + npcs.width / 2 + this.radiu/2) / this.radius;
+        //         console.log(npcs.opacity);
+        //     })
+        // }
     }
 
     class NPC{
@@ -79,22 +90,33 @@ window.addEventListener('load', function(){
             this.y = Math.random() * this.gameHeight;
             this.width = 300;
             this.height = 500;
+            this.opacity = 1;
         }
         draw(context){
-            context.fillStyle = "black";
+            context.fillStyle = "rgba(0, 0, 0, " + this.opacity + ")";
             context.fillRect(this.x, this.y, this.width, this.height);
+        }
+        update(context){
         }
     }
 
     const input = new InputHandler();
     const player = new Player(canvas.width, canvas.height);
-    const nonplayer = new NPC(canvas.width, canvas.height);
-
+    for(let i = 0; i < 11; i++)
+        nonplayer[i] = new NPC(canvas.width, canvas.height);
+    
     function animate(){
+        for(var i = 0; i < 11; i++){
+            nonplayer[i].draw(ctx);
+            // nonplayer[i].update(ctx);
+        }
         ctx.clearRect(0,0, canvas.width, canvas.height);
         player.draw(ctx);
         player.update(input);
-        nonplayer.draw(ctx);
+        for(var i = 0; i < 11; i++){
+            nonplayer[i].draw(ctx);
+            // nonplayer[i].update(ctx);
+        }
         requestAnimationFrame(animate);
     }
     animate();
