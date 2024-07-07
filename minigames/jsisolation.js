@@ -79,7 +79,7 @@ window.addEventListener('load', function(){
         //         npcs.opacity = (distance + npcs.width / 2 + this.radiu/2) / this.radius;
         //         console.log(npcs.opacity);
         //     })
-        // }
+        }
     }
 
     class NPC{
@@ -89,21 +89,28 @@ window.addEventListener('load', function(){
             this.x = Math.random() * this.gameWidth;
             this.y = Math.random() * this.gameHeight;
             this.width = 300;
-            this.height = 500;
+            this.height = 300;
             this.opacity = 1;
         }
         draw(context){
             context.fillStyle = "rgba(0, 0, 0, " + this.opacity + ")";
             context.fillRect(this.x, this.y, this.width, this.height);
         }
-        update(context){
+        update(context, player){
+            let dx = (this.x + this.width / 2) - (player.x + player.width/2);
+            let dy = (this.y + this.height / 2) - (player.y + player.height/2);
+            let distance = Math.sqrt(dx*dx + dy*dy);
+
+            let opacityChange = ((distance - player.radius) / distance) * 4;
+
+            this.opacity = opacityChange;
         }
     }
 
     const input = new InputHandler();
-    const player = new Player(canvas.width, canvas.height);
-    for(let i = 0; i < 11; i++)
+    for(let i = 0; i < 30; i++)
         nonplayer[i] = new NPC(canvas.width, canvas.height);
+    const player = new Player(canvas.width, canvas.height);
     
     function animate(){
         for(var i = 0; i < 11; i++){
@@ -113,9 +120,9 @@ window.addEventListener('load', function(){
         ctx.clearRect(0,0, canvas.width, canvas.height);
         player.draw(ctx);
         player.update(input);
-        for(var i = 0; i < 11; i++){
+        for(var i = 0; i < 30; i++){
             nonplayer[i].draw(ctx);
-            // nonplayer[i].update(ctx);
+            nonplayer[i].update(ctx, player);
         }
         requestAnimationFrame(animate);
     }
